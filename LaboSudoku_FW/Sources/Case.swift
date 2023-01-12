@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct Case: Hashable, CustomStringConvertible, Codable {
-    let ligne: Int
-    let colonne: Int
+public struct Case: Hashable, CustomStringConvertible, Codable {
+    public let ligne: Int
+    public let colonne: Int
     
-    init(_ ligne: Int, _ colonne: Int) {
+    public init(_ ligne: Int, _ colonne: Int) {
         self.ligne = ligne
         self.colonne = colonne
     }
     
-    var description: String {
+    public var description: String {
         "Case(\(ligne), \(colonne))"
     }
 }

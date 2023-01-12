@@ -7,21 +7,21 @@
 
 import Foundation
 
-struct Carre: Zone, Hashable, CustomStringConvertible, Codable {
-    let bandeH: Int
-    let bandeV: Int
+public struct Carre: UneZone, Hashable, CustomStringConvertible, Codable {
+    public let bandeH: Int
+    public let bandeV: Int
     
-    init(_ bandeH: Int, _ bandeV: Int) {
+    public init(_ bandeH: Int, _ bandeV: Int) {
         self.bandeH = bandeH
         self.bandeV = bandeV
     }
     
-    var description: String {
+    public var description: String {
         "Carre(\(bandeH), \(bandeV))"
     }
     
     /// Les 9 cases du carré
-    var lesCases: [Case] {
+    public var lesCases: [Case] {
         var liste = [Case]()
         for dl in 0...2 {
             for dc in 0...2 {

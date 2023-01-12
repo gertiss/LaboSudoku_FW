@@ -14,7 +14,7 @@
 		50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDC2970451E00C6F98E /* Grille.swift */; };
 		50BB3FDF2970455100C6F98E /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDE2970455100C6F98E /* Case.swift */; };
 		50BB3FE12970457E00C6F98E /* Ligne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE02970457E00C6F98E /* Ligne.swift */; };
-		50BB3FE32970458F00C6F98E /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE22970458F00C6F98E /* Zone.swift */; };
+		50BB3FE32970458F00C6F98E /* UneZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE22970458F00C6F98E /* UneZone.swift */; };
 		50BB3FE52970459B00C6F98E /* Carre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE42970459B00C6F98E /* Carre.swift */; };
 		50BB3FE7297045A300C6F98E /* Colonne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE6297045A300C6F98E /* Colonne.swift */; };
 		50BB3FE929704C0400C6F98E /* Extension Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE829704C0400C6F98E /* Extension Swift.swift */; };
@@ -41,7 +41,7 @@
 		50BB3FDC2970451E00C6F98E /* Grille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grille.swift; sourceTree = "<group>"; };
 		50BB3FDE2970455100C6F98E /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		50BB3FE02970457E00C6F98E /* Ligne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligne.swift; sourceTree = "<group>"; };
-		50BB3FE22970458F00C6F98E /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		50BB3FE22970458F00C6F98E /* UneZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneZone.swift; sourceTree = "<group>"; };
 		50BB3FE42970459B00C6F98E /* Carre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carre.swift; sourceTree = "<group>"; };
 		50BB3FE6297045A300C6F98E /* Colonne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colonne.swift; sourceTree = "<group>"; };
 		50BB3FE829704C0400C6F98E /* Extension Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension Swift.swift"; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 				50BB3FE829704C0400C6F98E /* Extension Swift.swift */,
 				50BB3FDC2970451E00C6F98E /* Grille.swift */,
 				50BB3FEC297055CE00C6F98E /* UneGrille.swift */,
-				50BB3FE22970458F00C6F98E /* Zone.swift */,
+				50BB3FE22970458F00C6F98E /* UneZone.swift */,
 				50BB3FDE2970455100C6F98E /* Case.swift */,
 				50BB3FE42970459B00C6F98E /* Carre.swift */,
 				50BB3FE02970457E00C6F98E /* Ligne.swift */,
@@ -235,7 +235,7 @@
 				50BB3FE929704C0400C6F98E /* Extension Swift.swift in Sources */,
 				50BB3FE12970457E00C6F98E /* Ligne.swift in Sources */,
 				50BB3FED297055CE00C6F98E /* UneGrille.swift in Sources */,
-				50BB3FE32970458F00C6F98E /* Zone.swift in Sources */,
+				50BB3FE32970458F00C6F98E /* UneZone.swift in Sources */,
 				50BB3FDF2970455100C6F98E /* Case.swift in Sources */,
 				50BB3FE7297045A300C6F98E /* Colonne.swift in Sources */,
 				50BB3F8A29703F9800C6F98E /* LaboSudoku_FW.docc in Sources */,

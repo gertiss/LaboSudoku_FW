@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct Colonne: Zone, Codable {
-    let index: Int // de 0 à 8
+public struct Colonne: UneZone, Codable {
+    public let index: Int // de 0 à 8
     
-    init(_ index: Int) {
+    public init(_ index: Int) {
         self.index = index
     }
     
     /// Les 9 cases de la colonne
-    var lesCases: [Case] {
+    public var lesCases: [Case] {
         (0...8).map { Case($0, index) }
     }
 }

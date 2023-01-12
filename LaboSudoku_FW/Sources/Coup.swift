@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Coup {
-    var laCase: Case
-    var valeur: Int
+public struct Coup {
+    public var laCase: Case
+    public var valeur: Int
+    
+    public init(_ laCase: Case, _ valeur: Int) {
+        self.laCase = laCase
+        self.valeur = valeur
+    }
 }

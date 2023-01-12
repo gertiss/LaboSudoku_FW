@@ -8,28 +8,30 @@
 import Foundation
 
 
-/// Pour des raisons d'efficacité, on stocke la topologie :
-/// cases, lignes, colonnes, carrés
-struct Grille: Codable {
+public struct Grille: Codable, UneGrille {
     
     /// La valeur d'une case s'obtient par contenu[indexLigne][indexColonne].  0 si case vide
     /// Voir fonction d'accès valeur(laCase:)
     private var contenu: [[Int]]
     
         
-    init(contenu: [[Int]]) {
+    public init(contenu: [[Int]]) {
         self.contenu = contenu
     }
     
-    init() {
+    public init() {
         self.contenu = [[Int]]()
-        self.contenu = contenuVide
+        self.contenu = Self.contenuVide
     }
 
-    static let vide = Grille()
+    public static let vide = Grille()
         
-    /// Les 81 cases de la grille
-    var calculCases: [Case] {
+    public static let lesCases = calculCases
+    static let lesLignes = calculLignes
+    public static let lesColonnes = calculColonnes
+    public static let lesCarres = calculCarres
+
+    public static var calculCases: [Case] {
         var liste = [Case]()
         for ligne in 0...8 {
             for colonne in 0...8 {
@@ -39,25 +41,7 @@ struct Grille: Codable {
         return liste
     }
     
-    var calculCarres: [Carre] {
-        var liste = [Carre]()
-        for bandeH in 0...2 {
-            for bandeV in 0...2 {
-                liste.append(Carre(bandeH, bandeV))
-            }
-        }
-        return liste
-    }
-    
-    var calculLignes: [Ligne] {
-        (0...8).map { Ligne($0) }
-    }
-    
-    var calculColonnes: [Colonne] {
-        (0...8).map { Colonne($0) }
-    }
-    
-    var contenuVide: [[Int]] {
+    public static let contenuVide =
         [
             [0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -71,32 +55,29 @@ struct Grille: Codable {
             [0, 0, 0, 0, 0, 0, 0, 0, 0],
             [0, 0, 0, 0, 0, 0, 0, 0, 0]
         ]
+    
+    private static var calculCarres: [Carre] {
+        var liste = [Carre]()
+        for bandeH in 0...2 {
+            for bandeV in 0...2 {
+                liste.append(Carre(bandeH, bandeV))
+            }
+        }
+        return liste
     }
     
-    
-}
-
-// MARK: - Topologie
-
-extension Grille {
-    
-    func cases(ligne: Ligne) -> [Case] {
-        ligne.lesCases
+    private static var calculLignes: [Ligne] {
+        (0...8).map { Ligne($0) }
     }
     
-    func cases(colonne: Colonne) -> [Case] {
-        colonne.lesCases
+    private static var calculColonnes: [Colonne] {
+        (0...8).map { Colonne($0) }
     }
-    
-    func cases(carre: Carre) -> [Case] {
-        carre.lesCases
-    }
-    
 }
 
 // MARK: - Etat actuel de remplissage
 
-extension Grille {
+public extension Grille {
     
     /// Valeur de 0 à 9, 0 signifiant valeur inconnue.
     func valeur(_ laCase: Case) -> Int {
@@ -119,9 +100,49 @@ extension Grille {
     }
 }
 
-// MARK : - Codage
+// MARK: - Jeu
 
-extension Grille {
+public extension Grille {
+    
+    func validite(_ leCoup: Coup) -> Result<Bool, String> {
+        let (ligne, colonne) = (leCoup.laCase.ligne, leCoup.laCase.colonne)
+        var copie = self
+        copie.contenu[ligne][colonne] = leCoup.valeur
+        
+        for ligne in Self.lesLignes {
+            if !copie.estValide(ligne) {
+                return .failure("\(ligne) n'est pas valide")
+            }
+        }
+        for colonne in Self.lesColonnes {
+            if !copie.estValide(colonne) {
+                return .failure("\(colonne) n'est pas valide")
+            }
+        }
+        for carre in Self.lesCarres {
+            if !copie.estValide(carre) {
+                return .failure("\(carre) n'est pas valide")
+            }
+        }
+        return .success(true)
+    }
+    
+    func estValide<Z: UneZone>(_ zone: Z) -> Bool {
+        zone.estValide(dans: self)
+    }
+    
+    /// Provisoire : pas de vérification de validité
+    func plus(_ unCoup: Coup) -> Result<Grille, String> {
+        let (ligne, colonne) = (unCoup.laCase.ligne, unCoup.laCase.colonne)
+        var copie = self
+        copie.contenu[ligne][colonne] = unCoup.valeur
+        return .success(copie)
+    }
+}
+
+// MARK: - Codage
+
+public extension Grille {
     
     static func avecCode(_ code: String) -> Result<Grille, String> {
         let decoder = JSONDecoder()
