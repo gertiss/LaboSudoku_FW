@@ -11,6 +11,15 @@
 		50BB3F9029703F9900C6F98E /* LaboSudoku_FW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BB3F8529703F9800C6F98E /* LaboSudoku_FW.framework */; };
 		50BB3F9529703F9900C6F98E /* LaboSudoku_FWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3F9429703F9900C6F98E /* LaboSudoku_FWTests.swift */; };
 		50BB3F9629703F9900C6F98E /* LaboSudoku_FW.h in Headers */ = {isa = PBXBuildFile; fileRef = 50BB3F8829703F9800C6F98E /* LaboSudoku_FW.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDC2970451E00C6F98E /* Grille.swift */; };
+		50BB3FDF2970455100C6F98E /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDE2970455100C6F98E /* Case.swift */; };
+		50BB3FE12970457E00C6F98E /* Ligne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE02970457E00C6F98E /* Ligne.swift */; };
+		50BB3FE32970458F00C6F98E /* Zone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE22970458F00C6F98E /* Zone.swift */; };
+		50BB3FE52970459B00C6F98E /* Carre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE42970459B00C6F98E /* Carre.swift */; };
+		50BB3FE7297045A300C6F98E /* Colonne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE6297045A300C6F98E /* Colonne.swift */; };
+		50BB3FE929704C0400C6F98E /* Extension Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE829704C0400C6F98E /* Extension Swift.swift */; };
+		50BB3FEB2970551300C6F98E /* Coup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEA2970551300C6F98E /* Coup.swift */; };
+		50BB3FED297055CE00C6F98E /* UneGrille.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEC297055CE00C6F98E /* UneGrille.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +38,15 @@
 		50BB3F8929703F9800C6F98E /* LaboSudoku_FW.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = LaboSudoku_FW.docc; sourceTree = "<group>"; };
 		50BB3F8F29703F9900C6F98E /* LaboSudoku_FWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboSudoku_FWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50BB3F9429703F9900C6F98E /* LaboSudoku_FWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaboSudoku_FWTests.swift; sourceTree = "<group>"; };
+		50BB3FDC2970451E00C6F98E /* Grille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grille.swift; sourceTree = "<group>"; };
+		50BB3FDE2970455100C6F98E /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
+		50BB3FE02970457E00C6F98E /* Ligne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligne.swift; sourceTree = "<group>"; };
+		50BB3FE22970458F00C6F98E /* Zone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Zone.swift; sourceTree = "<group>"; };
+		50BB3FE42970459B00C6F98E /* Carre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carre.swift; sourceTree = "<group>"; };
+		50BB3FE6297045A300C6F98E /* Colonne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colonne.swift; sourceTree = "<group>"; };
+		50BB3FE829704C0400C6F98E /* Extension Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension Swift.swift"; sourceTree = "<group>"; };
+		50BB3FEA2970551300C6F98E /* Coup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coup.swift; sourceTree = "<group>"; };
+		50BB3FEC297055CE00C6F98E /* UneGrille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneGrille.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +89,7 @@
 		50BB3F8729703F9800C6F98E /* LaboSudoku_FW */ = {
 			isa = PBXGroup;
 			children = (
+				50BB3FDB2970419C00C6F98E /* Sources */,
 				50BB3F8829703F9800C6F98E /* LaboSudoku_FW.h */,
 				50BB3F8929703F9800C6F98E /* LaboSudoku_FW.docc */,
 			);
@@ -83,6 +102,22 @@
 				50BB3F9429703F9900C6F98E /* LaboSudoku_FWTests.swift */,
 			);
 			path = LaboSudoku_FWTests;
+			sourceTree = "<group>";
+		};
+		50BB3FDB2970419C00C6F98E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				50BB3FE829704C0400C6F98E /* Extension Swift.swift */,
+				50BB3FDC2970451E00C6F98E /* Grille.swift */,
+				50BB3FEC297055CE00C6F98E /* UneGrille.swift */,
+				50BB3FE22970458F00C6F98E /* Zone.swift */,
+				50BB3FDE2970455100C6F98E /* Case.swift */,
+				50BB3FE42970459B00C6F98E /* Carre.swift */,
+				50BB3FE02970457E00C6F98E /* Ligne.swift */,
+				50BB3FE6297045A300C6F98E /* Colonne.swift */,
+				50BB3FEA2970551300C6F98E /* Coup.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +229,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */,
+				50BB3FE52970459B00C6F98E /* Carre.swift in Sources */,
+				50BB3FEB2970551300C6F98E /* Coup.swift in Sources */,
+				50BB3FE929704C0400C6F98E /* Extension Swift.swift in Sources */,
+				50BB3FE12970457E00C6F98E /* Ligne.swift in Sources */,
+				50BB3FED297055CE00C6F98E /* UneGrille.swift in Sources */,
+				50BB3FE32970458F00C6F98E /* Zone.swift in Sources */,
+				50BB3FDF2970455100C6F98E /* Case.swift in Sources */,
+				50BB3FE7297045A300C6F98E /* Colonne.swift in Sources */,
 				50BB3F8A29703F9800C6F98E /* LaboSudoku_FW.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +437,7 @@
 		50BB3F9D29703F9900C6F98E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -407,6 +452,7 @@
 		50BB3F9E29703F9900C6F98E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
