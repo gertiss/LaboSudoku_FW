@@ -7,10 +7,11 @@
 
 import Foundation
 
-public struct Colonne: UneZone, Codable {
+public struct Colonne: UneZone {
     public let index: Int // de 0 à 8
     
     public init(_ index: Int) {
+        assert(index >= 0 && index <= 8)
         self.index = index
     }
     
@@ -18,4 +19,9 @@ public struct Colonne: UneZone, Codable {
     public var lesCases: [Case] {
         (0...8).map { Case($0, index) }
     }
+    
+    public var description: String {
+        "Colonne(\(index))"
+    }
+
 }

@@ -7,11 +7,13 @@
 
 import Foundation
 
-public struct Carre: UneZone, Hashable, CustomStringConvertible, Codable {
-    public let bandeH: Int
-    public let bandeV: Int
+public struct Carre: UneZone {
+    public let bandeH: Int // de 0 à 2
+    public let bandeV: Int // de 0 à 2
     
     public init(_ bandeH: Int, _ bandeV: Int) {
+        assert(bandeH >= 0 && bandeH <= 2)
+        assert(bandeV >= 0 && bandeV <= 2)
         self.bandeH = bandeH
         self.bandeV = bandeV
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public protocol UneGrille {
+public protocol UneGrille: UtilisableCommeAtome  {
     init()
     init(contenu: [[Int]])
     

@@ -8,7 +8,7 @@
 import Foundation
 
 
-public struct Grille: Codable, UneGrille {
+public struct Grille: UneGrille {
     
     /// La valeur d'une case s'obtient par contenu[indexLigne][indexColonne].  0 si case vide
     /// Voir fonction d'accès valeur(laCase:)
@@ -26,19 +26,14 @@ public struct Grille: Codable, UneGrille {
 
     public static let vide = Grille()
         
-    public static let lesCases = calculCases
-    static let lesLignes = calculLignes
-    public static let lesColonnes = calculColonnes
-    public static let lesCarres = calculCarres
+    public static let lesCases: [Case] = calculCases
+    static let lesLignes: [Ligne] = calculLignes
+    public static let lesColonnes: [Colonne] = calculColonnes
+    public static let lesCarres: [Carre] = calculCarres
+    public static let lesZones: [any UneZone] = calculZones
 
-    public static var calculCases: [Case] {
-        var liste = [Case]()
-        for ligne in 0...8 {
-            for colonne in 0...8 {
-                liste.append(Case(ligne, colonne))
-            }
-        }
-        return liste
+    public var description: String {
+        "Grille(contenu: \(contenu))"
     }
     
     public static let contenuVide =
@@ -56,6 +51,16 @@ public struct Grille: Codable, UneGrille {
             [0, 0, 0, 0, 0, 0, 0, 0, 0]
         ]
     
+    private static var calculCases: [Case] {
+        var liste = [Case]()
+        for ligne in 0...8 {
+            for colonne in 0...8 {
+                liste.append(Case(ligne, colonne))
+            }
+        }
+        return liste
+    }
+
     private static var calculCarres: [Carre] {
         var liste = [Carre]()
         for bandeH in 0...2 {
@@ -72,6 +77,14 @@ public struct Grille: Codable, UneGrille {
     
     private static var calculColonnes: [Colonne] {
         (0...8).map { Colonne($0) }
+    }
+    
+    /// Utilisation d'un type "existentiel" `any UneZone`
+    /// Ce genre de type a des restrictions :
+    /// Type 'any UneZone' cannot conform to 'Equatable'
+    /// Et cela même si UneZone est Equatable
+    private static var calculZones: [any UneZone] {
+        calculLignes + calculColonnes + calculCarres
     }
 }
 
@@ -111,17 +124,17 @@ public extension Grille {
         
         for ligne in Self.lesLignes {
             if !copie.estValide(ligne) {
-                return .failure("\(ligne) n'est pas valide")
+                return .failure("\(ligne) contient déjà \(leCoup.valeur)")
             }
         }
         for colonne in Self.lesColonnes {
             if !copie.estValide(colonne) {
-                return .failure("\(colonne) n'est pas valide")
+                return .failure("\(colonne) contient déjà \(leCoup.valeur)")
             }
         }
         for carre in Self.lesCarres {
             if !copie.estValide(carre) {
-                return .failure("\(carre) n'est pas valide")
+                return .failure("\(carre) contient déjà \(leCoup.valeur)")
             }
         }
         return .success(true)
@@ -131,8 +144,10 @@ public extension Grille {
         zone.estValide(dans: self)
     }
     
-    /// Provisoire : pas de vérification de validité
     func plus(_ unCoup: Coup) -> Result<Grille, String> {
+        if let message = validite(unCoup).erreur {
+            return .failure(message)
+        }
         let (ligne, colonne) = (unCoup.laCase.ligne, unCoup.laCase.colonne)
         var copie = self
         copie.contenu[ligne][colonne] = unCoup.valeur
@@ -169,5 +184,7 @@ public extension Grille {
            return .failure("Erreur de décodage : \(error)")
         }
     }
+    
+    
 }
 

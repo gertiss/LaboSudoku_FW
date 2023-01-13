@@ -8,7 +8,10 @@
 import Foundation
 
 /// UneZone est une Ligne ou une Colonne ou un Carre
-public protocol UneZone {
+/// Si on veut une liste de UneZone, il faut écrire `[any UneZone]`
+/// Mais `any UneZone` ne peut pas être Equatable ni Hashable
+/// bien que UneZone le soit
+public protocol UneZone: UtilisableCommeAtome {
     var lesCases: [Case] { get }
     
     func valeursValides(dans grille: Grille) -> Bool
