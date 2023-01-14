@@ -8,14 +8,15 @@
 import Foundation
 
 public protocol UneGrille: UtilisableCommeAtome  {
-    init()
-    init(contenu: [[Int]])
+    init(commentaire: String)
+    init(contenu: [[Int]], commentaire: String)
     
     
     func valeur(_ laCase: Case) -> Int // 0 si pas de valeur
     func validite(_ leCoup: Coup) -> Result<Bool, String>
     func plus(_ unCoup: Coup) -> Result<Grille, String>
-
+    func moins(_ uneCase: Case) -> Grille
+    
     static func ligne(_ laCase: Case) -> Ligne
     static func colonne(_ laCase: Case) -> Colonne
     static func carre(_ laCase: Case) -> Carre

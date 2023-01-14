@@ -35,6 +35,12 @@ final class LaboSudoku_FWTests: XCTestCase {
     func testGrilleVide() {
         let grille = Grille()
         XCTAssert(grille.estVide)
+        XCTAssert(grille.estValide)
+    }
+    
+    /// Vérifie que les 27 zones sont valides
+    func testGrilleValide() {
+        XCTAssert(Grille.exemple22.estValide)
     }
     
     /// On engendre le code json d'une grille vide et on le relit.
@@ -127,6 +133,24 @@ final class LaboSudoku_FWTests: XCTestCase {
         XCTAssertFalse(essaiPlus.estSucces)
         print(essaiPlus.texte)
         // Ligne(1) contient déjà 6
+    }
+    
+    /// Pattern : deux rayons parallèles, un rayon perpendiculaire, une case occupée
+    /// Valeur cherchée : 1
+    /// Un seul coup certain possible.
+    func testPattern() {
+        
+        let essai = Grille().plus(Coup(Case(0, 6), 1))
+            .flatMap { $0.plus(Coup(Case(6, 0), 1)) }
+            .flatMap { $0.plus(Coup(Case(7, 3), 1)) }
+            .flatMap { $0.plus(Coup(Case(8, 7), 2)) }
+        
+        guard let grille = essai.valeur else {
+            XCTFail()
+            return
+        }
+        XCTAssert(grille.estValide)
+        XCTAssert(grille.estValide(coup: Coup(Case(8, 8), 1)))
     }
     
 }

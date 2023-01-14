@@ -9,7 +9,7 @@ import Foundation
 
 extension String: Error { }
 
-extension Result where Failure == String {
+public extension Result where Failure == String {
     
     var estSucces: Bool {
         switch self {
@@ -26,6 +26,7 @@ extension Result where Failure == String {
 
     }
     
+    /// description de la valeur ou message d'erreur
     var texte: String {
         switch self {
         case .success(let v): return "\(v)"

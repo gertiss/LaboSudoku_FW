@@ -8,7 +8,7 @@
 import Foundation
 
 
-extension Grille {
+public extension Grille {
     /// Grille facile du Monde du vendredi 6 janvier 2023
     /// 22 cases remplies au départ
     static let exemple22 = Grille(contenu: [
@@ -24,5 +24,6 @@ extension Grille {
         [0, 5, 0, 0, 2, 0, 9, 0, 0],
         [0, 0, 4, 0, 0, 1, 8, 0, 7]
     ])
+    
     
 }

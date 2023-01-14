@@ -13,14 +13,17 @@ public struct Grille: UneGrille {
     /// La valeur d'une case s'obtient par contenu[indexLigne][indexColonne].  0 si case vide
     /// Voir fonction d'accès valeur(laCase:)
     private var contenu: [[Int]]
+    public var commentaire: String
     
         
-    public init(contenu: [[Int]]) {
+    public init(contenu: [[Int]], commentaire: String = "") {
         self.contenu = contenu
+        self.commentaire = commentaire
     }
     
-    public init() {
+    public init(commentaire: String = "") {
         self.contenu = [[Int]]()
+        self.commentaire = commentaire
         self.contenu = Self.contenuVide
     }
 
@@ -144,6 +147,10 @@ public extension Grille {
         zone.estValide(dans: self)
     }
     
+    func estValide(coup: Coup) -> Bool {
+        validite(coup).estSucces
+    }
+    
     func plus(_ unCoup: Coup) -> Result<Grille, String> {
         if let message = validite(unCoup).erreur {
             return .failure(message)
@@ -152,6 +159,24 @@ public extension Grille {
         var copie = self
         copie.contenu[ligne][colonne] = unCoup.valeur
         return .success(copie)
+    }
+    
+    func moins(_ uneCase: Case) -> Grille {
+        let (ligne, colonne) = (uneCase.ligne, uneCase.colonne)
+        var copie = self
+        copie.contenu[ligne][colonne] = 0
+        return copie
+    }
+    
+    /// Une grille est valide si ses 27 zones sont valides.
+    /// Ici il n'est pas nécessaire que la grille soit complètement remplie.
+    /// C'est une validté partielle, provisoire.
+    var estValide: Bool {
+        Grille.lesZones.allSatisfy { estValide($0) }
+    }
+    
+    var estSolution: Bool {
+        estValide && Grille.lesCases.allSatisfy { !caseEstVide($0) }
     }
 }
 
