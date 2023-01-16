@@ -42,15 +42,23 @@ public extension UneGrille {
     }
     
     static func ligne(_ laCase: Case) -> Ligne {
-        Ligne(laCase.ligne)
+        Ligne(laCase.indexLigne)
     }
     
     static func colonne(_ laCase: Case) -> Colonne {
-        Colonne(laCase.colonne)
+        Colonne(laCase.indexColonne)
     }
     
     static func carre(_ laCase: Case) -> Carre {
-        Carre(laCase.ligne / 3, laCase.colonne / 3)
+        Carre(laCase.indexLigne / 3, laCase.indexColonne / 3)
+    }
+    
+    static func indexLigne(_ cellule: Case) -> Int {
+        ligne(cellule).index
+    }
+
+    static func indexColonne(_ cellule: Case) -> Int {
+        colonne(cellule).index
     }
 
 }

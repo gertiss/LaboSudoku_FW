@@ -97,7 +97,7 @@ public extension Grille {
     
     /// Valeur de 0 à 9, 0 signifiant valeur inconnue.
     func valeur(_ laCase: Case) -> Int {
-        contenu[laCase.ligne][laCase.colonne]
+        contenu[laCase.indexLigne][laCase.indexColonne]
     }
     
     func caseEstVide(_ laCase: Case) -> Bool {
@@ -114,6 +114,14 @@ public extension Grille {
         }
         return true
     }
+    
+    func casesRemplies(avec chiffre: Int) -> [Case] {
+        Grille.lesCases.filter { valeur($0) == chiffre }
+    }
+    
+    func casesOccupees(dans carre: Carre) -> [Case] {
+        carre.lesCases.filter { !caseEstVide($0) }
+    }
 }
 
 // MARK: - Jeu
@@ -121,7 +129,7 @@ public extension Grille {
 public extension Grille {
     
     func validite(_ leCoup: Coup) -> Result<Bool, String> {
-        let (ligne, colonne) = (leCoup.laCase.ligne, leCoup.laCase.colonne)
+        let (ligne, colonne) = (leCoup.laCase.indexLigne, leCoup.laCase.indexColonne)
         var copie = self
         copie.contenu[ligne][colonne] = leCoup.valeur
         
@@ -155,14 +163,14 @@ public extension Grille {
         if let message = validite(unCoup).erreur {
             return .failure(message)
         }
-        let (ligne, colonne) = (unCoup.laCase.ligne, unCoup.laCase.colonne)
+        let (ligne, colonne) = (unCoup.laCase.indexLigne, unCoup.laCase.indexColonne)
         var copie = self
         copie.contenu[ligne][colonne] = unCoup.valeur
         return .success(copie)
     }
     
     func moins(_ uneCase: Case) -> Grille {
-        let (ligne, colonne) = (uneCase.ligne, uneCase.colonne)
+        let (ligne, colonne) = (uneCase.indexLigne, uneCase.indexColonne)
         var copie = self
         copie.contenu[ligne][colonne] = 0
         return copie

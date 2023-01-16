@@ -8,17 +8,18 @@
 import Foundation
 
 public struct Case: Hashable, CustomStringConvertible, Codable {
-    public let ligne: Int // de 0 à 8
-    public let colonne: Int // de 0 à 8
+    public let indexLigne: Int // de 0 à 8
+    public let indexColonne: Int // de 0 à 8
     
-    public init(_ ligne: Int, _ colonne: Int) {
-        assert(ligne >= 0 && ligne <= 8)
-        assert(colonne >= 0 && colonne <= 8)
-        self.ligne = ligne
-        self.colonne = colonne
+    public init(_ indexLigne: Int, _ indexColonne: Int) {
+        assert(indexLigne >= 0 && indexLigne <= 8)
+        assert(indexColonne >= 0 && indexColonne <= 8)
+        self.indexLigne = indexLigne
+        self.indexColonne = indexColonne
     }
     
     public var description: String {
-        "Case(\(ligne), \(colonne))"
+        "Case(\(indexLigne), \(indexColonne))"
     }
 }
+

@@ -137,7 +137,7 @@ final class LaboSudoku_FWTests: XCTestCase {
     
     /// Pattern : deux rayons parallèles, un rayon perpendiculaire, une case occupée
     /// Valeur cherchée : 1
-    /// Un seul coup certain possible.
+    /// Un seul coup certain possible : Coup(Case(8, 8), 1)
     func testPattern() {
         
         let essai = Grille().plus(Coup(Case(0, 6), 1))
@@ -149,8 +149,11 @@ final class LaboSudoku_FWTests: XCTestCase {
             XCTFail()
             return
         }
-        XCTAssert(grille.estValide)
-        XCTAssert(grille.estValide(coup: Coup(Case(8, 8), 1)))
+        
+        let carres = (1...9).flatMap { grille.carresCibles(pour: $0) }
+        XCTAssertEqual(carres, [Carre(2, 2)])
+        
+        XCTAssertEqual(grille.casesCandidates(pour: 1, dans: Carre(2, 2)), [Case(8, 8)])
     }
     
 }

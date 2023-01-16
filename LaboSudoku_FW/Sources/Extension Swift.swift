@@ -49,3 +49,19 @@ public extension Result where Failure == String {
     }
 
 }
+
+
+public extension Array where Element: Hashable {
+    var ensemble: Set<Element> {
+        Set(self)
+    }
+}
+
+public extension Set {
+    
+    var uniqueValeur: Element? {
+        if count != 1 { return nil }
+        let liste: [Element] = self.map { $0 }
+        return liste[0]
+    }
+}
