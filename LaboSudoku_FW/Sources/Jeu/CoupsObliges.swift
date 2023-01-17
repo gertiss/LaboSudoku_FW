@@ -13,14 +13,14 @@ public extension Grille {
     func coupsObliges(valeur: Int) -> Set<Coup> {
         Grille.lesCases
             .filter { caseEstVide($0)}
-            .filter { valeursCandidates($0).count == 1 }
+            .filter { valeursManquantesCandidates($0).count == 1 }
             .map { cellule in Coup(cellule, valeur)}
             .ensemble
     }
     
     /// Le seul coup possible pour une cellule vide qui n'a plus qu'une seule valeur candidate, nil sinon
     func coupOblige(cellule: Case) -> Coup? {
-        guard let valeur = valeursCandidates(cellule).uniqueValeur else {
+        guard let valeur = valeursManquantesCandidates(cellule).uniqueValeur else {
             return nil
         }
         return Coup(cellule, valeur)

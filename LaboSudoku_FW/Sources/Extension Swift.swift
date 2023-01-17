@@ -65,3 +65,24 @@ public extension Set {
         return liste[0]
     }
 }
+
+extension Dictionary {
+    
+    /// On ajoute l'élément à la valeur de la clé, lorsque cette valeur est un ensemble
+    mutating func ajouter<E>(_ element: E, a cle: Key) where Value == Set<E> {
+        guard var ensemble = self[cle] else {
+            self[cle] = [element]
+            return
+        }
+        ensemble.insert(element)
+        self[cle] = ensemble
+    }
+}
+
+extension Set {
+    var uniqueElement: Element {
+        assert(count == 1)
+        return map{$0}[0]
+    }
+}
+

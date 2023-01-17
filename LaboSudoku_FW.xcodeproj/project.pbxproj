@@ -127,8 +127,8 @@
 		50BB3FDB2970419C00C6F98E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				50594D932975546700CFD2F3 /* Jeu */,
 				50BB3FE829704C0400C6F98E /* Extension Swift.swift */,
+				50594D932975546700CFD2F3 /* Jeu */,
 				5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */,
 				50BB3FEC297055CE00C6F98E /* UneGrille.swift */,
 				50BB3FE22970458F00C6F98E /* UneZone.swift */,

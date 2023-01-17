@@ -10,10 +10,10 @@ import Foundation
 
 extension Grille {
 
-    /// Les valeurs qui restent possibles pour la case après élimination  des valeurs présentes dans sa ligne, sa cellule et son carré
-    func valeursCandidates(_ cellule: Case) -> Set<Int> {
+    /// Les valeurs qui restent possibles pour la case après élimination  des valeurs présentes dans sa ligne, sa cellule et son carré. Si la case est occupée, on rend l'ensemble vide.
+    func valeursManquantesCandidates(_ cellule: Case) -> Set<Int> {
         if !caseEstVide(cellule) {
-            return [valeur(cellule)]
+            return []
         }
         var ensemble: Set<Int> = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
