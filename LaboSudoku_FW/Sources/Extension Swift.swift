@@ -80,6 +80,9 @@ extension Dictionary {
 }
 
 extension Set {
+    
+    /// Lorsque l'ensemble est un singleton, on retourne l'unique element.
+    /// Erreur sinon
     var uniqueElement: Element {
         assert(count == 1)
         return map{$0}[0]

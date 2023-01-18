@@ -82,7 +82,7 @@ public extension Grille {
         return dico
     }
     
-    func casesObligees(pour valeur: Int) -> [Case] {
+    func casesObligeesParRayons(pour valeur: Int) -> [Case] {
         let casesObligeesParCarre = casesPossiblesParCarre(pour: valeur).filter { (_, cellules) in
             cellules.count == 1
         }
@@ -93,26 +93,15 @@ public extension Grille {
         return liste
     }
     
-    
+    func casesObligeesParNeuviemeValeur(pour valeur: Int) -> [Case] {
+        var liste = [Case]()
+        for cellule in Grille.lesCases {
+            let valeurs = valeursManquantesCandidates(cellule)
+            if valeurs.count == 1 &&  valeurs.uniqueElement == valeur{
+                liste.append(cellule)
+            }
+        }
+        return liste
+    }
 }
 
-    
-public extension Grille {
-    
-    /// Toutes les cases vides où la valeur est encore candidate
-    func casesCandidates(_ valeur: Int) -> [Case] {
-        Grille.lesCases.filter { valeursManquantesCandidates($0).contains(valeur) }
-    }
-    
-    /// Les cases vides qui n'ont plus que la valeur comme unique valeur candidate
-    func casesObligees(_ valeur: Int) -> [Case] {
-        casesCandidates(valeur).filter { valeursManquantesCandidates($0).count == 1 }
-    }
-    
-    func casesCandidates(pour valeur: Int, dans carre: Carre) -> [Case] {
-        carre.lesCases.filter { valeursManquantesCandidates($0).contains(valeur) }
-    }
-    
-    
-
-}

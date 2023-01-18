@@ -10,7 +10,7 @@ import Foundation
 
 extension Grille {
 
-    /// Les valeurs qui restent possibles pour la case après élimination  des valeurs présentes dans sa ligne, sa cellule et son carré. Si la case est occupée, on rend l'ensemble vide.
+    /// Les valeurs qui restent possibles pour la case après élimination  des valeurs présentes dans sa ligne, sa cellule et son carré. Si la case est occupée, on rend l'ensemble vide car la valeur n'est pas "manquante".
     func valeursManquantesCandidates(_ cellule: Case) -> Set<Int> {
         if !caseEstVide(cellule) {
             return []
@@ -33,5 +33,7 @@ extension Grille {
         }
         return ensemble
     }
+    
+    
         
 }

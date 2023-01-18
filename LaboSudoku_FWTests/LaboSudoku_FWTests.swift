@@ -141,8 +141,20 @@ final class LaboSudoku_FWTests: XCTestCase {
     func testExo2() {
         let grille = Grille.exo2
         
-        print("interdites pour 1:", grille.nombreDeCasesImpossiblesParCarre(pour: 1))
+        XCTAssertEqual(grille.casesObligeesParRayons(pour: 1), [Case(8, 8)])
+    }
+    
+    func testPattern_JD_1() {
+        let grille = Grille.pattern_JD_1
+        XCTAssertEqual(grille.casesObligeesParRayons(pour: 1), [])
+        XCTAssertEqual(grille.casesObligeesParNeuviemeValeur(pour: 1), [Case(8, 0)])
         
+        
+        XCTAssertEqual(grille.coupsUniqueValeurObliges(valeur: 1), [Coup(Case(8, 0), 1)])
+        XCTAssertEqual(grille.coupsUniqueValeurObliges(valeur: 2), [])
+        XCTAssertEqual(grille.coupUniqueValeurOblige(cellule: Case(8,0)), Coup(Case(8, 0), 1))
+        XCTAssertEqual(grille.valeursManquantesCandidates(Case(8,0)), [1])
+        XCTAssertEqual(grille.coupsUniqueValeurObliges, [Coup(Case(8, 0), 1)])
     }
     
 }
