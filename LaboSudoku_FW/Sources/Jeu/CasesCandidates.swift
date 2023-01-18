@@ -82,6 +82,7 @@ public extension Grille {
         return dico
     }
     
+    /// Les cases qu'on peut déterminer uniquement par la stratégie des rayons (élimination directe)
     func casesObligeesParRayons(pour valeur: Int) -> [Case] {
         let casesObligeesParCarre = casesPossiblesParCarre(pour: valeur).filter { (_, cellules) in
             cellules.count == 1
@@ -93,6 +94,7 @@ public extension Grille {
         return liste
     }
     
+    /// Les cases qu'on peut déterminer uniquement par la stratégie "9ème valeur quand les 8 autres sont interdites".
     func casesObligeesParNeuviemeValeur(pour valeur: Int) -> [Case] {
         var liste = [Case]()
         for cellule in Grille.lesCases {
