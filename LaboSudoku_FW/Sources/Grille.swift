@@ -39,6 +39,10 @@ public struct Grille: UneGrille {
         "Grille(contenu: \(contenu))"
     }
     
+    public static let nomsLignes = "ABCDEFGHI".map { String($0) }
+    public static let nomsColonnes = "abcdefghi".map { String($0) }
+    public static let enTeteColonnes = "  " + nomsColonnes.joined(separator: " ")
+
     public static let contenuVide =
         [
             [0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -89,6 +93,14 @@ public struct Grille: UneGrille {
     private static var calculZones: [any UneZone] {
         calculLignes + calculColonnes + calculCarres
     }
+    
+    /// On suppose le coup valide
+    func nouvelleGrilleApres(coup: Coup) -> Grille {
+        var copie = self
+        copie.contenu[coup.laCase.indexLigne][coup.laCase.indexColonne] = coup.valeur
+        return copie
+    }
+
 }
 
 // MARK: - Etat actuel de remplissage
@@ -100,10 +112,14 @@ public extension Grille {
         contenu[laCase.indexLigne][laCase.indexColonne]
     }
     
-    func caseEstVide(_ laCase: Case) -> Bool {
-        valeur(laCase) == 0
+    func caseEstVide(_ cellule: Case) -> Bool {
+        valeur(cellule) == 0
     }
-    
+ 
+    func caseEstOccupee(_ laCase: Case) -> Bool {
+        !caseEstVide(laCase)
+    }
+
     var estVide: Bool {
         for ligne in 0...8 {
             for colonne in 0...8 {
@@ -115,12 +131,12 @@ public extension Grille {
         return true
     }
     
-    func casesRemplies(avec chiffre: Int) -> [Case] {
-        Grille.lesCases.filter { valeur($0) == chiffre }
+    func casesRemplies(avec chiffre: Int) -> Set<Case> {
+        Grille.lesCases.filter { valeur($0) == chiffre }.ensemble
     }
     
-    func casesOccupees(dans carre: Carre) -> [Case] {
-        carre.lesCases.filter { !caseEstVide($0) }
+    func casesOccupees(dans carre: Carre) -> Set<Case> {
+        carre.lesCases.filter { !caseEstVide($0) }.ensemble
     }
 }
 
@@ -221,3 +237,17 @@ public extension Grille {
     
 }
 
+// MARK: - Représentation en texte
+
+extension Grille {
+    
+    /// La représentation d'une grille sous forme de "texte graphique"
+    public var texte: String {
+        Grille.enTeteColonnes + "\n" +
+        (0...8)
+            .map { Ligne($0).texte(dans: self)}
+            .joined(separator: "\n")
+    }
+    
+
+}

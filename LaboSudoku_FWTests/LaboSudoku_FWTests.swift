@@ -136,25 +136,80 @@ final class LaboSudoku_FWTests: XCTestCase {
     }
     
     /// Pattern : deux rayons parallèles, un rayon perpendiculaire, une case occupée
-    /// Valeur cherchée : 1
-    /// Un seul coup certain possible : Coup(Case(8, 8), 1)
     func testExo2() {
         let grille = Grille.exo2
         
-        XCTAssertEqual(grille.casesObligeesParRayons(pour: 1), [Case(8, 8)])
+        XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [Coup(Case(8, 8), 1)])
+        XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [])
     }
     
+    /// Pattern : une ligne avec 3 cases vides dont une obligée
     func testPattern_JD_1() {
         let grille = Grille.pattern_JD_1
-        XCTAssertEqual(grille.casesObligeesParRayons(pour: 1), [])
-        XCTAssertEqual(grille.casesObligeesParNeuviemeValeur(pour: 1), [Case(8, 0)])
+                
+        XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [])
+        XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [Coup(Case(8, 0), 1)])
+    }
+    
+    func testExemple22() {
+        let grille = Grille.exemple22
+        // Focalisation : pour chaque valeur, chercher les cases obligées
+        XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [Coup(Case(4, 4), 7), Coup(Case(3, 8), 8), Coup(Case(3, 0), 3), Coup(Case(8, 7), 5), Coup(Case(7, 8), 3)])
+        XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [Coup(Case(8, 4), 3), Coup(Case(6, 8), 4)])
+
+        print(grille.code.texte)
+    }
+    
+    func testLeMondeFacile2() {
+        let grille = Grille.LeMondeFacile2
+        // Focalisation : pour chaque valeur, chercher les cases obligées
+        XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [Coup(Case(0, 1), 6), Coup(Case(2, 4), 4), Coup(Case(0, 2), 2), Coup(Case(2, 6), 2), Coup(Case(2, 3), 6)])
+                
+        XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [Coup(Case(2, 3), 6), Coup(Case(2, 4), 4), Coup(Case(0, 2), 2)])
+    }
+    
+    func testRayonsSecondaires() {
+        let grille = Grille.patternIndirect
+        // Focalisation pour chaque case de la zone, chercher les valeurs obligées
+        let casesEliminees = grille.casesElimineesParRayonnement(pour: 1)
+        let casesOccupees = grille.casesOccupees(dans: Carre(1, 2))
         
+        let casesLibres = Carre(1, 2).casesLibres(casesEliminees: casesEliminees, casesOccupees: casesOccupees)
+        XCTAssertEqual(casesLibres, [Case(4, 6), Case(5, 6)])
+        XCTAssert(Carre(1, 2).estColonneEmettrice(index: 6, casesLibres: casesLibres))
+    }
+    
+    func testEliminationDansLigne() {
+        var grille = Grille.patternRayonnementIndirectDouble
+        var historique  = [Coup]()
         
-        XCTAssertEqual(grille.coupsUniqueValeurObliges(valeur: 1), [Coup(Case(8, 0), 1)])
-        XCTAssertEqual(grille.coupsUniqueValeurObliges(valeur: 2), [])
-        XCTAssertEqual(grille.coupUniqueValeurOblige(cellule: Case(8,0)), Coup(Case(8, 0), 1))
-        XCTAssertEqual(grille.valeursManquantesCandidates(Case(8,0)), [1])
-        XCTAssertEqual(grille.coupsUniqueValeurObliges, [Coup(Case(8, 0), 1)])
+        let coup = grille.premierCoupOblige
+        XCTAssertEqual(coup, Coup(Case(2, 2), 5))
+        guard let coup else {
+            XCTFail()
+            return
+        }
+        historique.append(coup)
+        // On ne peut plus jouer après ce coup
+        grille = grille.nouvelleGrilleApres(coup: coup)
+        XCTAssertNil(grille.premierCoupOblige)
+    }
+    
+    func testTexte() {
+        let grille = Grille.patternRayonnementIndirectDouble
+        let texteAttendu = """
+  a b c d e f g h i
+A · · · · · · · · ·
+B · · · · · · · · ·
+C · · · · · 1 · 8 ·
+D · · · 5 · · · · ·
+E 5 · · · · · · · ·
+F · · · · · · · · 5
+G · 5 · · · · · · ·
+H · · · · · · 5 · ·
+I · · · · 5 · · · ·
+"""
+        XCTAssertEqual(grille.texte, texteAttendu)
     }
     
 }

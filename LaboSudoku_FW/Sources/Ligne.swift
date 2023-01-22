@@ -25,3 +25,23 @@ public struct Ligne: UneZone {
     }
 
 }
+
+public extension Ligne {
+    
+    var nom: String {
+        return Grille.nomsLignes[index]
+    }
+    
+    func texte(dans grille: Grille) -> String {
+        let txtValeurs = (0...8)
+            .map { co in
+                let valeur = grille.valeur(Case(index, co))
+                return valeur == 0 ? "·" : "\(valeur)"
+            }
+            .joined(separator: " ")
+        
+        return "\(Grille.nomsLignes[index]) \(txtValeurs)"
+
+        
+    }
+}

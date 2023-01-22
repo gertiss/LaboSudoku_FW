@@ -32,4 +32,13 @@ public struct Carre: UneZone {
         }
         return liste
     }
+    
+    public var rangeLignes: ClosedRange<Int> {
+        (bandeH * 3)...(bandeH * 3 + 2)
+    }
+    
+    public var rangeColonnes: ClosedRange<Int> {
+        (bandeV * 3)...(bandeV * 3 + 2)
+    }
+
 }
