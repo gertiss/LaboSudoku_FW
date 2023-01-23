@@ -34,7 +34,9 @@ public struct Grille: UneGrille {
     public static let lesColonnes: [Colonne] = calculColonnes
     public static let lesCarres: [Carre] = calculCarres
     public static let lesZones: [any UneZone] = calculZones
-
+    public static let lesZonesPourEliminationCases: [any UneZone] = calculZonesPourEliminationCases
+    public static let lesZonesPourEliminationValeurs: [any UneZone] = calculZonesPourEliminationValeurs
+    
     public var description: String {
         "Grille(contenu: \(contenu))"
     }
@@ -91,16 +93,30 @@ public struct Grille: UneGrille {
     /// Type 'any UneZone' cannot conform to 'Equatable'
     /// Et cela même si UneZone est Equatable
     private static var calculZones: [any UneZone] {
+        calculCarres + calculLignes + calculColonnes
+    }
+    
+    /// La liste des zones dans un ordre favorable à l'élimination de valeurs
+    private static var calculZonesPourEliminationValeurs: [any UneZone] {
         calculLignes + calculColonnes + calculCarres
     }
     
-    /// On suppose le coup valide
-    func nouvelleGrilleApres(coup: Coup) -> Grille {
-        var copie = self
-        copie.contenu[coup.laCase.indexLigne][coup.laCase.indexColonne] = coup.valeur
-        return copie
+    /// La liste des zones dans un ordre favorable à l'élimination de cases
+    private static var calculZonesPourEliminationCases : [any UneZone] {
+        calculCarres + calculLignes + calculColonnes
     }
-
+    
+    public static func lesZones(type: TypeZone) -> [any UneZone] {
+        switch type {
+        case .carre:
+            return lesCarres
+        case .ligne:
+            return lesLignes
+        case .colonne:
+            return lesColonnes
+        }
+    }
+    
 }
 
 // MARK: - Etat actuel de remplissage
@@ -202,9 +218,40 @@ public extension Grille {
     var estSolution: Bool {
         estValide && Grille.lesCases.allSatisfy { !caseEstVide($0) }
     }
+    
+    var premierCoup: CoupAvecExplication? {
+        let coupCase = Recherche(strategie: .eliminationCases)
+            .premierCoup(pour: self)
+        if let coupCase {
+            return coupCase
+        }
+        
+        let coupValeur = Recherche(strategie: .eliminationValeurs)
+            .premierCoup(pour: self)
+        if let coupValeur {
+            return coupValeur
+        }
+        return nil
+    }
+    
+    /// Retourne tous les coups trouvés jusqu'à succès ou blocage
+    var partie: Partie {
+        var listeCoups = [CoupAvecExplication]()
+        var grille = self
+        var coup = premierCoup
+        while coup != nil {
+            let premierCoup = coup!
+            assert(!listeCoups.contains(premierCoup))
+            listeCoups.append(premierCoup)
+            grille = grille.plus(premierCoup.coup).valeur!
+            coup = grille.premierCoup
+        }
+        return Partie(grilleInitiale: self, coups: listeCoups, succes: grille.estSolution)
+    }
+    
 }
 
-// MARK: - Codage
+// MARK: - Codage JSON
 
 public extension Grille {
     

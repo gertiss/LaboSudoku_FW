@@ -8,6 +8,8 @@
 import Foundation
 
 public struct Ligne: UneZone {
+    public var type: TypeZone = .ligne
+    
     public let index: Int // de 0 à 8
     
     public init(_ index: Int) {
@@ -29,7 +31,7 @@ public struct Ligne: UneZone {
 public extension Ligne {
     
     var nom: String {
-        return Grille.nomsLignes[index]
+        return "la ligne " + Grille.nomsLignes[index]
     }
     
     func texte(dans grille: Grille) -> String {

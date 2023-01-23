@@ -21,5 +21,10 @@ public struct Case: Hashable, CustomStringConvertible, Codable {
     public var description: String {
         "Case(\(indexLigne), \(indexColonne))"
     }
+    
+    /// Exemple :  Case(0, 0) a pour nom "Aa"
+    public var nom: String {
+        "\(Grille.nomsLignes[indexLigne])\(Grille.nomsColonnes[indexColonne])"
+    }
 }
 

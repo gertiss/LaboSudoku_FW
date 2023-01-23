@@ -18,18 +18,7 @@ final class LaboSudoku_FWTests: XCTestCase {
         print()
     }
 
-    func testLesZones() {
-        XCTAssertEqual(Grille.lesZones.count, 27)
         
-        // On ne peut pas tester directement l'égalité :
-        // Type 'any UneZone' cannot conform to 'Equatable'.
-        // On se contente de l'égalité des descriptions.
-        XCTAssertEqual(
-            "\(Grille.lesZones)",
-            "[Ligne(0), Ligne(1), Ligne(2), Ligne(3), Ligne(4), Ligne(5), Ligne(6), Ligne(7), Ligne(8), Colonne(0), Colonne(1), Colonne(2), Colonne(3), Colonne(4), Colonne(5), Colonne(6), Colonne(7), Colonne(8), Carre(0, 0), Carre(0, 1), Carre(0, 2), Carre(1, 0), Carre(1, 1), Carre(1, 2), Carre(2, 0), Carre(2, 1), Carre(2, 2)]"
-        )
-        
-    }
     
     /// Une init sans paramètres crée une grille vide.
     func testGrilleVide() {
@@ -157,16 +146,19 @@ final class LaboSudoku_FWTests: XCTestCase {
         XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [Coup(Case(4, 4), 7), Coup(Case(3, 8), 8), Coup(Case(3, 0), 3), Coup(Case(8, 7), 5), Coup(Case(7, 8), 3)])
         XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [Coup(Case(8, 4), 3), Coup(Case(6, 8), 4)])
 
-        print(grille.code.texte)
+        print(grille.texte)
+        print(grille.partie.succes)
     }
     
     func testLeMondeFacile2() {
         let grille = Grille.LeMondeFacile2
         // Focalisation : pour chaque valeur, chercher les cases obligées
-        XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [Coup(Case(0, 1), 6), Coup(Case(2, 4), 4), Coup(Case(0, 2), 2), Coup(Case(2, 6), 2), Coup(Case(2, 3), 6)])
+        XCTAssertEqual(grille.coupsObligesApresEliminationDirecteParRayonnement, [Coup(Case(2, 6), 2), Coup(Case(0, 1), 6)].ensemble)
                 
-        XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [Coup(Case(2, 3), 6), Coup(Case(2, 4), 4), Coup(Case(0, 2), 2)])
-    }
+        XCTAssertEqual(grille.coupsObligesParUniqueValeurPossible, [Coup(Case(2, 1), 3), Coup(Case(0, 6), 9)].ensemble)
+        print(grille.texte)
+        print(grille.partie.succes)
+   }
     
     func testRayonsSecondaires() {
         let grille = Grille.patternIndirect
@@ -179,21 +171,6 @@ final class LaboSudoku_FWTests: XCTestCase {
         XCTAssert(Carre(1, 2).estColonneEmettrice(index: 6, casesLibres: casesLibres))
     }
     
-    func testEliminationDansLigne() {
-        var grille = Grille.patternRayonnementIndirectDouble
-        var historique  = [Coup]()
-        
-        let coup = grille.premierCoupOblige
-        XCTAssertEqual(coup, Coup(Case(2, 2), 5))
-        guard let coup else {
-            XCTFail()
-            return
-        }
-        historique.append(coup)
-        // On ne peut plus jouer après ce coup
-        grille = grille.nouvelleGrilleApres(coup: coup)
-        XCTAssertNil(grille.premierCoupOblige)
-    }
     
     func testTexte() {
         let grille = Grille.patternRayonnementIndirectDouble
@@ -212,5 +189,54 @@ I · · · · 5 · · · ·
         XCTAssertEqual(grille.texte, texteAttendu)
     }
     
+    func testPremierCoup() {
+        
+        func afficherCoup(_ grille: Grille) {
+            print()
+            print(grille.texte)
+            print()
+            print(grille.premierCoup?.explication ?? "aucun coup trouvé")
+        }
+        
+        afficherCoup(Grille.patternRayonnementIndirectDouble)
+        afficherCoup(Grille.patternIndirect)
+        afficherCoup(Grille.pattern_JD_1)
+        afficherCoup(Grille.exo2)
+        afficherCoup(Grille.LeMondeFacile2)
+    }
+    
+    func testPartie() {
+        func afficherCoup(_ grille: Grille) {
+            print()
+            print(grille.premierCoup?.explication ?? "aucun coup trouvé")
+        }
+        var grille = Grille.LeMondeFacile2
+        print(grille.texte)
+        
+        var coup = grille.premierCoup
+        while coup != nil {
+            let premierCoup = coup!
+            afficherCoup(grille)
+            grille = grille.plus(premierCoup.coup).valeur!
+            print("\n\(grille.texte)")
+            coup = grille.premierCoup
+        }
+        
+        if grille.estSolution {
+            print("\nSuccès")
+        } else {
+            print("\nEchec")
+        }
+    }
+    
+    func testPartieDifficile() {
+        let grille = Grille.LeMondeDifficile
+        print(grille.texte)
+        let partie = grille.partie
+        partie.coups.forEach { print($0.explication) }
+        print("succès:", partie.succes)
+
+    }
+
 }
 

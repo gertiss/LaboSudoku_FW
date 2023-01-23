@@ -21,3 +21,34 @@ public struct Coup: UtilisableCommeAtome {
         "Coup(\(laCase), \(valeur))"
     }
 }
+
+public struct CoupAvecExplication: Hashable, Codable {
+    public var coup: Coup
+    public var focalisation: Focalisation
+    
+    public init(coup: Coup, focalisation: Focalisation) {
+        self.coup = coup
+        self.focalisation = focalisation
+    }
+}
+
+public extension CoupAvecExplication {
+    
+    var strategie: Strategie {
+        switch focalisation {
+        case .zoneValeur:
+            return .eliminationCases
+        case .zoneCase:
+            return .eliminationValeurs
+        }
+    }
+    
+    var explication: String {
+        switch focalisation {
+        case .zoneValeur(let f):
+            return "Dans \(f.zone.nom), la valeur \(coup.valeur) ne peut aller que dans la case \(coup.laCase.nom)"
+        case .zoneCase(let f):
+            return "Dans \(f.zone.nom), la case \(coup.laCase.nom) ne peut contenir que la valeur \(coup.valeur)"
+        }
+    }
+}

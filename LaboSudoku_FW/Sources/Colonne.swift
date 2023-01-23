@@ -8,6 +8,8 @@
 import Foundation
 
 public struct Colonne: UneZone {
+    public var type: TypeZone = .colonne
+    
     public let index: Int // de 0 à 8
     
     public init(_ index: Int) {
@@ -23,5 +25,10 @@ public struct Colonne: UneZone {
     public var description: String {
         "Colonne(\(index))"
     }
+    
+    public var nom: String {
+        return "la colonne " + Grille.nomsColonnes[index]
+    }
+
 
 }

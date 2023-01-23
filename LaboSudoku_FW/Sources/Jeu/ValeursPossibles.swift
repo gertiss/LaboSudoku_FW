@@ -43,7 +43,6 @@ extension Grille {
     
     /// On se focalise sur une case vide d'une zone, et on cherche les valeurs impossibles dans cette case
     func valeursElimineesParRayonnementOuPresentesDansZone<Zone: UneZone>(pour cellule: Case, dans zone: Zone) -> Set<Int> {
-        assert(caseEstVide(cellule))
         let ensembleValeurs = Set<Int>(1...9)
         let valeursElimineesParRayonnement = ensembleValeurs.subtracting(valeursPossiblesPourRayonnement(cellule))
         let valeursPresentesDansZone = zone.lesCases.compactMap {

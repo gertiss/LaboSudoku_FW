@@ -7,13 +7,21 @@
 
 import Foundation
 
+public enum TypeZone: Hashable, Codable {
+    case carre
+    case ligne
+    case colonne
+}
+
 /// UneZone est une Ligne ou une Colonne ou un Carre
 /// Si on veut une liste de UneZone, il faut écrire `[any UneZone]`
 /// Mais `any UneZone` ne peut pas être Equatable ni Hashable
 /// bien que UneZone le soit
 public protocol UneZone: UtilisableCommeAtome {
     var lesCases: [Case] { get }
+    var type: TypeZone { get }
     
+    var nom: String { get }
     func valeursValides(dans grille: Grille) -> Bool
     func valeursDistinctes(dans grille: Grille) -> Bool
     func estValide(dans grille: Grille) -> Bool

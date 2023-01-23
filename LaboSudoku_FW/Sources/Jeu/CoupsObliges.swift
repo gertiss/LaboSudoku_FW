@@ -64,23 +64,7 @@ public extension Grille {
     }
 }
 
-// MARK: - Jeu
 
-public extension Grille {
-    
-    var premierCoupOblige: Coup? {
-        let parRayonnement = coupsObligesApresEliminationDirecteParRayonnement
-        if let coup = parRayonnement.first {
-            return coup
-        }
-        let parUniqueValeur = coupsObligesParUniqueValeurPossible
-        if let coup = parUniqueValeur.first {
-            return coup
-        }
-        return nil
-    }
     
     
-    
-    
-}
+
