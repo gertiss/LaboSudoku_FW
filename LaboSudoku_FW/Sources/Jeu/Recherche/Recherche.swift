@@ -29,7 +29,7 @@ public extension Recherche {
     func premierCoup(pour grille: Grille) -> CoupAvecExplication? {
         var trouve = false
         switch strategie {
-        case .eliminationValeurs:
+        case .eliminationCases:
             for zone in Grille.lesZonesPourEliminationValeurs {
                 for valeur in 1...9 {
                     let focalisation = FocalisationZoneValeur.avec(zone: zone, valeur: valeur)
@@ -39,7 +39,7 @@ public extension Recherche {
                     }
                 }
             }
-        case .eliminationCases:
+        case .eliminationValeurs:
             for zone in Grille.lesZonesPourEliminationCases {
                 for cellule in zone.lesCases {
                     let focalisation = FocalisationZoneCase.avec(zone: zone, cellule: cellule)

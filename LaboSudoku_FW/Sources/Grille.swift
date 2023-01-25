@@ -219,6 +219,7 @@ public extension Grille {
         estValide && Grille.lesCases.allSatisfy { !caseEstVide($0) }
     }
     
+    
     var premierCoup: CoupAvecExplication? {
         let coupCase = Recherche(strategie: .eliminationCases)
             .premierCoup(pour: self)

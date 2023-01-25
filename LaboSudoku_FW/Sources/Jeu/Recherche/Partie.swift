@@ -24,8 +24,8 @@ public struct Partie {
 public extension Partie {
     
     var deroulement: String {
-        let resultat = succes ? "succes" : "échec"
-        return resultat + "\n\n" +
+        let resultat = succes ? "succès" : "échec"
+        return "\n" + resultat + "\n\n" +
         coups.map { coup in
             coup.explication
         }.joined(separator: "\n")
