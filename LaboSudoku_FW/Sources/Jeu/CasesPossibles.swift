@@ -7,7 +7,11 @@
 
 import Foundation
 
-// MARK: - Elimination par rayonnement
+// MARK: - Elimination de cases par rayonnement
+
+/*
+ Quelles sont les cases vides possibles pour une valeur donnée une fois qu'on a éliminé les cases impossibles à cause du rayonnement ?
+ */
 
 public extension Grille {
     
@@ -56,7 +60,7 @@ public extension Grille {
     
 }
 
-// MARK: -  Recherche globale
+// MARK: -  Recherche globale dans la grille
 
 public extension Grille {
     
@@ -68,15 +72,5 @@ public extension Grille {
         }.ensemble
     }
     
-    /// A rendre obsolète
-
-    /// Les cases qu'on peut déterminer uniquement par la stratégie d'élimination directe après rayonnement.
-    /// Focalisation par zone
-    func casesObligeesApresEliminationDirecteParRayonnement<Zone: UneZone>(dans zone: Zone) -> Set<Case> {
-        (1...9).compactMap { valeur in
-            caseObligeeApresEliminationDirecteParRayonnement(pour: valeur, dans: zone)
-        }.ensemble
-    }
-
 }
 

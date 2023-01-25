@@ -45,10 +45,10 @@ public extension CoupAvecExplication {
     
     var explication: String {
         switch focalisation {
-        case .zoneValeur(let f):
-            return "Dans \(f.zone.nom), la valeur \(coup.valeur) ne peut aller que dans la case \(coup.laCase.nom)"
-        case .zoneCase(let f):
-            return "Dans \(f.zone.nom), la case \(coup.laCase.nom) ne peut contenir que la valeur \(coup.valeur)"
+        case .zoneValeur(_):
+            return "La valeur \(coup.valeur) ne peut aller que dans la case \(coup.laCase.nom) (9ème case)"
+        case .zoneCase(_):
+            return "La case \(coup.laCase.nom) ne peut contenir que la valeur \(coup.valeur) (9ème valeur)"
         }
     }
 }

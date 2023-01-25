@@ -29,7 +29,7 @@ public extension Grille {
 public extension Grille {
     
     
-    /// Tous les coups obligés trouvés par la règle 8 valeurs impossibles => neuvième obligée
+    /// Tous les coups obligés trouvés par la règle 8 valeurs impossibles dans une zone => neuvième obligée
     /// Focalisation : pour chaque zone, pour chaque case, chercher la neuvième valeur
     var coupsObligesParUniqueValeurPossible: Set<Coup> {
         var ensemble: Set<Coup> = []
@@ -43,7 +43,6 @@ public extension Grille {
     
     
     /// Le seul coup possible pour une cellule vide qui n'a plus qu'une seule valeur candidate, nil sinon
-    /// Les cases interdites se détectent par
     func coupObligeParUniqueValeurPossible(dans cellule: Case) -> Coup? {
         guard let valeur = valeursPossiblesPourRayonnement(cellule).uniqueValeur else {
             return nil
@@ -53,6 +52,7 @@ public extension Grille {
     
     
     
+    /// Les seuls coups possibles dans une zone en cherchant les cases qui n'ont plus qu'une seule valeur candidate
     func coupsObligesParUniqueValeurPossible<Z: UneZone>(dans zone: Z) -> Set<Coup> {
         var ensemble = Set<Coup>()
         for cellule in zone.lesCases {

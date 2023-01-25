@@ -7,11 +7,10 @@
 
 import Foundation
 
-// MARK: - Rayonnement. Elimination directe
+// MARK: - Elimination de valeurs par rayonnement
 
 // Quelles sont les valeurs possibles pour une case vide
 // une fois qu'on a éliminé les valeurs impossibles à cause du rayonnement ?
-// Si la case est remplie, on rend l'ensemble vide.
 // On doit examiner les 20 cases qui sont dans le champ du rayonnement.
 
 extension Grille {

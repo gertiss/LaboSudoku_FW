@@ -20,3 +20,14 @@ public struct Partie {
         self.succes = succes
     }
 }
+
+public extension Partie {
+    
+    var deroulement: String {
+        let resultat = succes ? "succes" : "échec"
+        return resultat + "\n\n" +
+        coups.map { coup in
+            coup.explication
+        }.joined(separator: "\n")
+    }
+}

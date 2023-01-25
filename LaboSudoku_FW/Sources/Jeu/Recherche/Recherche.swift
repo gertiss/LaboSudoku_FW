@@ -7,6 +7,10 @@
 
 import Foundation
 
+/*
+ Recherche de solution suivant une stratégie
+ */
+
 public enum Strategie: Codable, Hashable {
     case eliminationCases
     case eliminationValeurs

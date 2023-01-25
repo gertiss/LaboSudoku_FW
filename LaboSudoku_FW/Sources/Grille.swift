@@ -286,15 +286,25 @@ public extension Grille {
 
 // MARK: - Représentation en texte
 
-extension Grille {
+public extension Grille {
     
     /// La représentation d'une grille sous forme de "texte graphique"
-    public var texte: String {
+    var texte: String {
         Grille.enTeteColonnes + "\n" +
         (0...8)
             .map { Ligne($0).texte(dans: self)}
             .joined(separator: "\n")
     }
+
+}
+
+// MARK: - Debug
+
+public extension Grille {
     
+    func printDansConsoleXcode() {
+        // Le déroulement de la partie résolue par le framework, jusqu'à succès ou blocage
+        print(partie.deroulement)
+    }
 
 }

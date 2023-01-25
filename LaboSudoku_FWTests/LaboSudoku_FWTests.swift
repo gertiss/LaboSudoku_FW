@@ -237,6 +237,16 @@ I · · · · 5 · · · ·
         print("succès:", partie.succes)
 
     }
+    
+    func testPartieFacile3() {
+        let grille = Grille.moyen1
+        print(grille.texte)
+        let partie = grille.partie
+        partie.coups.forEach { print($0.explication) }
+        print("succès:", partie.succes)
+
+    }
+
 
 }
 

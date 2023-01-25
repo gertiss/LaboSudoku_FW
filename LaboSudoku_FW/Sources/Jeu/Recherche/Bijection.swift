@@ -7,8 +7,10 @@
 
 import Foundation
 
+// Travail en cours. Non utilisé
+
 /// Une bijection entre cases et valeurs à l'intérieur d'une zone.
-/// Intéressant lorsque c'est un singleton ou une paire
+/// Intéressant lorsque c'est un singleton ou une paire.
 /// Contraintes vérifiées à l'init : toutes les cases sont dans la zone, toutes les valeurs sont valides et le nombre de cases est égal au nombre de valeurs.
 public struct Bijection<Z: UneZone> {
     public var cases: [Case]

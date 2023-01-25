@@ -9,8 +9,8 @@ import Foundation
 
 public struct Carre: UneZone {
     public var nom: String {
-        let nomsBandesH = ["X", "Y", "Z"]
-        let nomsBandesV = ["x", "y", "z"]
+        let nomsBandesH = ["M", "N", "P"]
+        let nomsBandesV = ["m", "n", "p"]
         return "le carré \(nomsBandesH[bandeH])\(nomsBandesV[bandeV])"
    }
     

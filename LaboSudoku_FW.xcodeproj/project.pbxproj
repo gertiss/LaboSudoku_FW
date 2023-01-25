@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50105D25297FC10B004731E1 /* Problèmes faciles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50105D24297FC10B004731E1 /* Problèmes faciles.swift */; };
+		50105D27297FD4FF004731E1 /* Problèmes moyens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50105D26297FD4FF004731E1 /* Problèmes moyens.swift */; };
 		50121796297D24A000F4953D /* FocalisationZoneValeur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50121795297D24A000F4953D /* FocalisationZoneValeur.swift */; };
 		5012179A297DB21F00F4953D /* Recherche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50121799297DB21F00F4953D /* Recherche.swift */; };
 		5034EC94297164B100EE0F34 /* UtilisableCommeAtome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */; };
@@ -45,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50105D24297FC10B004731E1 /* Problèmes faciles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Problèmes faciles.swift"; sourceTree = "<group>"; };
+		50105D26297FD4FF004731E1 /* Problèmes moyens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Problèmes moyens.swift"; sourceTree = "<group>"; };
 		50121795297D24A000F4953D /* FocalisationZoneValeur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalisationZoneValeur.swift; sourceTree = "<group>"; };
 		50121799297DB21F00F4953D /* Recherche.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recherche.swift; sourceTree = "<group>"; };
 		5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilisableCommeAtome.swift; sourceTree = "<group>"; };
@@ -92,6 +96,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50105D23297FC0AA004731E1 /* Exemples */ = {
+			isa = PBXGroup;
+			children = (
+				50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */,
+				50105D24297FC10B004731E1 /* Problèmes faciles.swift */,
+				50105D26297FD4FF004731E1 /* Problèmes moyens.swift */,
+			);
+			path = Exemples;
+			sourceTree = "<group>";
+		};
 		50594D932975546700CFD2F3 /* Jeu */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,7 +163,7 @@
 				50BB3FEC297055CE00C6F98E /* UneGrille.swift */,
 				50BB3FE22970458F00C6F98E /* UneZone.swift */,
 				50BB3FDC2970451E00C6F98E /* Grille.swift */,
-				50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */,
+				50105D23297FC0AA004731E1 /* Exemples */,
 				50BB3FDE2970455100C6F98E /* Case.swift */,
 				50BB3FE42970459B00C6F98E /* Carre.swift */,
 				50BB3FE02970457E00C6F98E /* Ligne.swift */,
@@ -286,6 +300,8 @@
 				50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */,
 				50BB3FEF2970995B00C6F98E /* Grille Exemples.swift in Sources */,
 				50121796297D24A000F4953D /* FocalisationZoneValeur.swift in Sources */,
+				50105D25297FC10B004731E1 /* Problèmes faciles.swift in Sources */,
+				50105D27297FD4FF004731E1 /* Problèmes moyens.swift in Sources */,
 				5079BCE4297E890B0036C6B6 /* FocalisationZoneCase.swift in Sources */,
 				50BB3FE52970459B00C6F98E /* Carre.swift in Sources */,
 				50594D99297565D100CFD2F3 /* CoupsObliges.swift in Sources */,
