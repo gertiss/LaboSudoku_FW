@@ -246,6 +246,12 @@ I · · · · 5 · · · ·
         print("succès:", partie.succes)
 
     }
+    
+    func testRadar() {
+        let cellules = Grille.radar(Case(4, 5))
+        XCTAssertEqual(cellules.count, 20)
+        XCTAssertEqual(cellules, [Case(4, 4), Case(6, 5), Case(4, 6), Case(3, 5), Case(5, 5), Case(0, 5), Case(8, 5), Case(4, 3), Case(2, 5), Case(3, 4), Case(7, 5), Case(4, 7), Case(5, 4), Case(3, 3), Case(4, 1), Case(4, 8), Case(1, 5), Case(5, 3), Case(4, 2), Case(4, 0)])
+    }
 
 
 }

@@ -30,8 +30,8 @@ public protocol UneZone: UtilisableCommeAtome {
 public extension UneZone {
     
     func valeursValides(dans grille: Grille) -> Bool {
-        lesCases.allSatisfy { laCase in
-            let valeur = grille.valeur(laCase)
+        lesCases.allSatisfy { cellule in
+            let valeur = grille.valeur(cellule)
             return valeur >= 0 && valeur <= 9
         }
     }

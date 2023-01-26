@@ -9,22 +9,18 @@ import Foundation
 
 // Travail en cours. Non utilisé
 
-/// Une bijection entre cases et valeurs à l'intérieur d'une zone.
+/// Une bijection entre cases et valeurs.
 /// Intéressant lorsque c'est un singleton ou une paire.
-/// Contraintes vérifiées à l'init : toutes les cases sont dans la zone, toutes les valeurs sont valides et le nombre de cases est égal au nombre de valeurs.
-public struct Bijection<Z: UneZone> {
-    public var cases: [Case]
-    public var valeurs: [Int]
-    public var zone: Z
+/// Contraintes à l'init : toutes les valeurs sont valides et le nombre de cases est égal au nombre de valeurs.
+public struct Bijection {
+    public var cases: Set<Case>
+    public var valeurs: Set<Int>
     
-    public init(cases: [Case], valeurs: [Int], zone: Z) {
+    public init(cases: Set<Case>, valeurs: Set<Int>) {
         assert(valeurs.allSatisfy { $0 >= 1 && $0 <= 9 })
         assert(valeurs.count == cases.count)
-        let casesZone = zone.lesCases
-        assert(cases.allSatisfy { casesZone.contains($0) })
         self.cases = cases
         self.valeurs = valeurs
-        self.zone = zone
     }
     
 }

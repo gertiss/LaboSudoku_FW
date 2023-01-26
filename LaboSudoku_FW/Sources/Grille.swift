@@ -11,11 +11,15 @@ import Foundation
 public struct Grille: UneGrille {
     
     /// La valeur d'une case s'obtient par contenu[indexLigne][indexColonne].  0 si case vide
-    /// Voir fonction d'accès valeur(laCase:)
+    /// Voir fonction d'accès valeur(cellule:)
     private var contenu: [[Int]]
     public var commentaire: String
     
-        
+    // Indexation des paires
+
+//    var contraintesValeurPaire = [ContrainteValeurPaireDansCarre]()
+//    var contraintesCasePaire = [ContrainteCasePaire]()
+    
     public init(contenu: [[Int]], commentaire: String = "") {
         self.contenu = contenu
         self.commentaire = commentaire
@@ -26,114 +30,31 @@ public struct Grille: UneGrille {
         self.commentaire = commentaire
         self.contenu = Self.contenuVide
     }
-
-    public static let vide = Grille()
-        
-    public static let lesCases: [Case] = calculCases
-    static let lesLignes: [Ligne] = calculLignes
-    public static let lesColonnes: [Colonne] = calculColonnes
-    public static let lesCarres: [Carre] = calculCarres
-    public static let lesZones: [any UneZone] = calculZones
-    public static let lesZonesPourEliminationCases: [any UneZone] = calculZonesPourEliminationCases
-    public static let lesZonesPourEliminationValeurs: [any UneZone] = calculZonesPourEliminationValeurs
-    
+ 
     public var description: String {
         "Grille(contenu: \(contenu))"
     }
-    
-    public static let nomsLignes = "ABCDEFGHI".map { String($0) }
-    public static let nomsColonnes = "abcdefghi".map { String($0) }
-    public static let enTeteColonnes = "  " + nomsColonnes.joined(separator: " ")
 
-    public static let contenuVide =
-        [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ]
-    
-    private static var calculCases: [Case] {
-        var liste = [Case]()
-        for ligne in 0...8 {
-            for colonne in 0...8 {
-                liste.append(Case(ligne, colonne))
-            }
-        }
-        return liste
-    }
-
-    private static var calculCarres: [Carre] {
-        var liste = [Carre]()
-        for bandeH in 0...2 {
-            for bandeV in 0...2 {
-                liste.append(Carre(bandeH, bandeV))
-            }
-        }
-        return liste
-    }
-    
-    private static var calculLignes: [Ligne] {
-        (0...8).map { Ligne($0) }
-    }
-    
-    private static var calculColonnes: [Colonne] {
-        (0...8).map { Colonne($0) }
-    }
-    
-    /// Utilisation d'un type "existentiel" `any UneZone`
-    /// Ce genre de type a des restrictions :
-    /// Type 'any UneZone' cannot conform to 'Equatable'
-    /// Et cela même si UneZone est Equatable
-    private static var calculZones: [any UneZone] {
-        calculCarres + calculLignes + calculColonnes
-    }
-    
-    /// La liste des zones dans un ordre favorable à l'élimination de valeurs
-    private static var calculZonesPourEliminationValeurs: [any UneZone] {
-        calculLignes + calculColonnes + calculCarres
-    }
-    
-    /// La liste des zones dans un ordre favorable à l'élimination de cases
-    private static var calculZonesPourEliminationCases : [any UneZone] {
-        calculCarres + calculLignes + calculColonnes
-    }
-    
-    public static func lesZones(type: TypeZone) -> [any UneZone] {
-        switch type {
-        case .carre:
-            return lesCarres
-        case .ligne:
-            return lesLignes
-        case .colonne:
-            return lesColonnes
-        }
-    }
-    
 }
+
+
+
 
 // MARK: - Etat actuel de remplissage
 
 public extension Grille {
     
     /// Valeur de 0 à 9, 0 signifiant valeur inconnue.
-    func valeur(_ laCase: Case) -> Int {
-        contenu[laCase.indexLigne][laCase.indexColonne]
+    func valeur(_ cellule: Case) -> Int {
+        contenu[cellule.indexLigne][cellule.indexColonne]
     }
     
     func caseEstVide(_ cellule: Case) -> Bool {
         valeur(cellule) == 0
     }
  
-    func caseEstOccupee(_ laCase: Case) -> Bool {
-        !caseEstVide(laCase)
+    func caseEstOccupee(_ cellule: Case) -> Bool {
+        !caseEstVide(cellule)
     }
 
     var estVide: Bool {
@@ -147,6 +68,7 @@ public extension Grille {
         return true
     }
     
+    /// L'ensemble de toutes les cases qui contiennent le chiffre
     func casesRemplies(avec chiffre: Int) -> Set<Case> {
         Grille.lesCases.filter { valeur($0) == chiffre }.ensemble
     }
@@ -161,7 +83,7 @@ public extension Grille {
 public extension Grille {
     
     func validite(_ leCoup: Coup) -> Result<Bool, String> {
-        let (ligne, colonne) = (leCoup.laCase.indexLigne, leCoup.laCase.indexColonne)
+        let (ligne, colonne) = (leCoup.cellule.indexLigne, leCoup.cellule.indexColonne)
         var copie = self
         copie.contenu[ligne][colonne] = leCoup.valeur
         
@@ -195,7 +117,7 @@ public extension Grille {
         if let message = validite(unCoup).erreur {
             return .failure(message)
         }
-        let (ligne, colonne) = (unCoup.laCase.indexLigne, unCoup.laCase.indexColonne)
+        let (ligne, colonne) = (unCoup.cellule.indexLigne, unCoup.cellule.indexColonne)
         var copie = self
         copie.contenu[ligne][colonne] = unCoup.valeur
         return .success(copie)
@@ -265,7 +187,7 @@ public extension Grille {
             let instance = try decoder.decode(Grille.self, from: data)
             return .success(instance)
         } catch {
-            return .failure("Erreur de décodage : \(error)")
+            return .failure("Erreur de décodage json : \(error)")
         }
     }
     
@@ -274,11 +196,11 @@ public extension Grille {
             let encoder = JSONEncoder()
             let data = try encoder.encode(self)
             guard let texte = String(data: data, encoding: .utf8) else {
-                return .failure("Codage: Impossible de créer data")
+                return .failure("Codage json : Impossible de créer data")
             }
             return .success(texte)
        } catch {
-           return .failure("Erreur de décodage : \(error)")
+           return .failure("Erreur de décodage json : \(error)")
         }
     }
     

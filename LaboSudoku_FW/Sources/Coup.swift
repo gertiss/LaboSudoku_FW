@@ -8,17 +8,17 @@
 import Foundation
 
 public struct Coup: UtilisableCommeAtome {
-    public var laCase: Case
+    public var cellule: Case
     public var valeur: Int // de 1 à 9
     
-    public init(_ laCase: Case, _ valeur: Int) {
+    public init(_ cellule: Case, _ valeur: Int) {
         assert(valeur >= 1 && valeur <= 9)
-        self.laCase = laCase
+        self.cellule = cellule
         self.valeur = valeur
     }
     
     public var description: String {
-        "Coup(\(laCase), \(valeur))"
+        "Coup(\(cellule), \(valeur))"
     }
 }
 
@@ -46,9 +46,9 @@ public extension CoupAvecExplication {
     var explication: String {
         switch focalisation {
         case .zoneValeur(_):
-            return "La valeur \(coup.valeur) ne peut aller que dans la case \(coup.laCase.nom) (9ème case)"
+            return "\(coup.valeur) dans \(coup.cellule.nom)"
         case .zoneCase(_):
-            return "La case \(coup.laCase.nom) ne peut contenir que la valeur \(coup.valeur) (9ème valeur)"
+            return "\(coup.cellule.nom) reçoit \(coup.valeur)"
         }
     }
 }

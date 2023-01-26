@@ -12,14 +12,14 @@ public protocol UneGrille: UtilisableCommeAtome  {
     init(contenu: [[Int]], commentaire: String)
     
     
-    func valeur(_ laCase: Case) -> Int // 0 si pas de valeur
+    func valeur(_ cellule: Case) -> Int // 0 si pas de valeur
     func validite(_ leCoup: Coup) -> Result<Bool, String>
     func plus(_ unCoup: Coup) -> Result<Grille, String>
     func moins(_ uneCase: Case) -> Grille
     
-    static func ligne(_ laCase: Case) -> Ligne
-    static func colonne(_ laCase: Case) -> Colonne
-    static func carre(_ laCase: Case) -> Carre
+    static func ligne(_ cellule: Case) -> Ligne
+    static func colonne(_ cellule: Case) -> Colonne
+    static func carre(_ cellule: Case) -> Carre
     
     var code: Result<String, String>  { get }
     static func avecCode(_ code: String) -> Result<Grille, String>
@@ -41,16 +41,16 @@ public extension UneGrille {
         carre.lesCases
     }
     
-    static func ligne(_ laCase: Case) -> Ligne {
-        Ligne(laCase.indexLigne)
+    static func ligne(_ cellule: Case) -> Ligne {
+        Ligne(cellule.indexLigne)
     }
     
-    static func colonne(_ laCase: Case) -> Colonne {
-        Colonne(laCase.indexColonne)
+    static func colonne(_ cellule: Case) -> Colonne {
+        Colonne(cellule.indexColonne)
     }
     
-    static func carre(_ laCase: Case) -> Carre {
-        Carre(laCase.indexLigne / 3, laCase.indexColonne / 3)
+    static func carre(_ cellule: Case) -> Carre {
+        Carre(cellule.indexLigne / 3, cellule.indexColonne / 3)
     }
     
     static func indexLigne(_ cellule: Case) -> Int {
