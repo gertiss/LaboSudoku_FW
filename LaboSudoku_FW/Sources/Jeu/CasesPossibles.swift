@@ -41,6 +41,7 @@ public extension Grille {
 
 public extension Grille {
     
+    /// "Eliminee" signifie : vide et dans le champ d'un émetteur de la valeur.
     func casesElimineesDirectementParRayonnementOuOccupees<Zone: UneZone>(pour valeur: Int, dans zone: Zone) -> Set<Case> {
         let casesInterditesDansGrille = casesElimineesParRayonnement(pour: valeur)
         return zone.lesCases.filter { cellule in

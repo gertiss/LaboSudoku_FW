@@ -12,8 +12,8 @@ import Foundation
  */
 
 public enum Strategie: Codable, Hashable {
-    case eliminationCases
-    case eliminationValeurs
+    case rechercheDeCasesPourValeur
+    case rechercheDeValeursPourCase
 }
 
 /// On cherche des coups possibles avec une stratégie
@@ -29,30 +29,26 @@ public extension Recherche {
     func premierCoup(pour grille: Grille) -> CoupAvecExplication? {
         var trouve = false
         switch strategie {
-        case .eliminationCases:
-            for zone in Grille.lesZonesPourEliminationValeurs {
+        case .rechercheDeCasesPourValeur:
+            for zone in Grille.lesZonesPourRechercheDeCases {
                 for valeur in 1...9 {
-                    let focalisation = FocalisationZoneValeur.avec(zone: zone, valeur: valeur)
+                    let focalisation = FocalisationValeurZone.avec(valeur: valeur, zone: zone)
                     if let uniqueCase = focalisation.uniqueCasePossible(pour: grille) {
                         trouve = true
-                        return CoupAvecExplication(coup: Coup(uniqueCase, valeur), focalisation: .zoneValeur(focalisation))
+                        return CoupAvecExplication(coup: Coup(uniqueCase, valeur), focalisation: .valeurZone(focalisation))
                     }
                 }
             }
-        case .eliminationValeurs:
-            for zone in Grille.lesZonesPourEliminationCases {
-                for cellule in zone.lesCases {
-                    let focalisation = FocalisationZoneCase.avec(zone: zone, cellule: cellule)
-                    if let uniqueValeur = focalisation.uniqueValeurPossible(pour: grille) {
-                        trouve = true
-                        return CoupAvecExplication(coup: Coup(cellule, uniqueValeur), focalisation: .zoneCase(focalisation))
-                    }
+        case .rechercheDeValeursPourCase:
+            for cellule in Grille.lesCases {
+                let focalisation = FocalisationCellule(cellule: cellule)
+                if let uniqueValeur = focalisation.uniqueValeurPossible(pour: grille) {
+                    trouve = true
+                    return CoupAvecExplication(coup: Coup(cellule, uniqueValeur), focalisation: .cellule(focalisation))
                 }
             }
         }
         if !trouve { return nil }
     }
+    
 }
-
-/// Un coup obtenu par .eliminationCases provient d'une FocalisationZoneValeur pour une zone qui contient la case.
-/// Un coup obtenu par .eliminationValeurs provient d'une FocalisationZoneCase pour une zone qui contient la case.

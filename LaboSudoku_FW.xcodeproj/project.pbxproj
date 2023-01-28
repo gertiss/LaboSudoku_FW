@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		50105D25297FC10B004731E1 /* Problèmes faciles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50105D24297FC10B004731E1 /* Problèmes faciles.swift */; };
 		50105D27297FD4FF004731E1 /* Problèmes moyens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50105D26297FD4FF004731E1 /* Problèmes moyens.swift */; };
-		50121796297D24A000F4953D /* FocalisationZoneValeur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50121795297D24A000F4953D /* FocalisationZoneValeur.swift */; };
+		50121796297D24A000F4953D /* FocalisationValeurZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50121795297D24A000F4953D /* FocalisationValeurZone.swift */; };
 		5012179A297DB21F00F4953D /* Recherche.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50121799297DB21F00F4953D /* Recherche.swift */; };
 		5034EC94297164B100EE0F34 /* UtilisableCommeAtome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */; };
 		50594D952975547C00CFD2F3 /* ValeursPossibles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50594D942975547C00CFD2F3 /* ValeursPossibles.swift */; };
 		50594D97297561CF00CFD2F3 /* CasesPossibles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50594D96297561CF00CFD2F3 /* CasesPossibles.swift */; };
 		50594D99297565D100CFD2F3 /* CoupsObliges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50594D98297565D100CFD2F3 /* CoupsObliges.swift */; };
 		505F1A8E2978584A0075E218 /* RayonnementIndirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F1A8D2978584A0075E218 /* RayonnementIndirect.swift */; };
-		5079BCE4297E890B0036C6B6 /* FocalisationZoneCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079BCE3297E890B0036C6B6 /* FocalisationZoneCase.swift */; };
+		5079BCE4297E890B0036C6B6 /* FocalisationCellule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079BCE3297E890B0036C6B6 /* FocalisationCellule.swift */; };
 		5079BCE6297E8E5D0036C6B6 /* Focalisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079BCE5297E8E5D0036C6B6 /* Focalisation.swift */; };
 		5079BCE8297EF8340036C6B6 /* Partie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079BCE7297EF8340036C6B6 /* Partie.swift */; };
 		50B134E42982AFC100B735DF /* ContrainteValeurPaireDansCarre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B134E32982AFC100B735DF /* ContrainteValeurPaireDansCarre.swift */; };
@@ -52,14 +52,14 @@
 /* Begin PBXFileReference section */
 		50105D24297FC10B004731E1 /* Problèmes faciles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Problèmes faciles.swift"; sourceTree = "<group>"; };
 		50105D26297FD4FF004731E1 /* Problèmes moyens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Problèmes moyens.swift"; sourceTree = "<group>"; };
-		50121795297D24A000F4953D /* FocalisationZoneValeur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalisationZoneValeur.swift; sourceTree = "<group>"; };
+		50121795297D24A000F4953D /* FocalisationValeurZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalisationValeurZone.swift; sourceTree = "<group>"; };
 		50121799297DB21F00F4953D /* Recherche.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recherche.swift; sourceTree = "<group>"; };
 		5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilisableCommeAtome.swift; sourceTree = "<group>"; };
 		50594D942975547C00CFD2F3 /* ValeursPossibles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValeursPossibles.swift; sourceTree = "<group>"; };
 		50594D96297561CF00CFD2F3 /* CasesPossibles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasesPossibles.swift; sourceTree = "<group>"; };
 		50594D98297565D100CFD2F3 /* CoupsObliges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupsObliges.swift; sourceTree = "<group>"; };
 		505F1A8D2978584A0075E218 /* RayonnementIndirect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayonnementIndirect.swift; sourceTree = "<group>"; };
-		5079BCE3297E890B0036C6B6 /* FocalisationZoneCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalisationZoneCase.swift; sourceTree = "<group>"; };
+		5079BCE3297E890B0036C6B6 /* FocalisationCellule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalisationCellule.swift; sourceTree = "<group>"; };
 		5079BCE5297E8E5D0036C6B6 /* Focalisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focalisation.swift; sourceTree = "<group>"; };
 		5079BCE7297EF8340036C6B6 /* Partie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partie.swift; sourceTree = "<group>"; };
 		50B134E32982AFC100B735DF /* ContrainteValeurPaireDansCarre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrainteValeurPaireDansCarre.swift; sourceTree = "<group>"; };
@@ -185,8 +185,8 @@
 			children = (
 				50C9D3F6297B088D004A43BB /* Bijection.swift */,
 				5079BCE5297E8E5D0036C6B6 /* Focalisation.swift */,
-				50121795297D24A000F4953D /* FocalisationZoneValeur.swift */,
-				5079BCE3297E890B0036C6B6 /* FocalisationZoneCase.swift */,
+				50121795297D24A000F4953D /* FocalisationValeurZone.swift */,
+				5079BCE3297E890B0036C6B6 /* FocalisationCellule.swift */,
 				50121799297DB21F00F4953D /* Recherche.swift */,
 				5079BCE7297EF8340036C6B6 /* Partie.swift */,
 				50B134E32982AFC100B735DF /* ContrainteValeurPaireDansCarre.swift */,
@@ -308,11 +308,11 @@
 				50594D97297561CF00CFD2F3 /* CasesPossibles.swift in Sources */,
 				50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */,
 				50BB3FEF2970995B00C6F98E /* Grille Exemples.swift in Sources */,
-				50121796297D24A000F4953D /* FocalisationZoneValeur.swift in Sources */,
+				50121796297D24A000F4953D /* FocalisationValeurZone.swift in Sources */,
 				50105D25297FC10B004731E1 /* Problèmes faciles.swift in Sources */,
 				50B134E82982B1F500B735DF /* Grille static.swift in Sources */,
 				50105D27297FD4FF004731E1 /* Problèmes moyens.swift in Sources */,
-				5079BCE4297E890B0036C6B6 /* FocalisationZoneCase.swift in Sources */,
+				5079BCE4297E890B0036C6B6 /* FocalisationCellule.swift in Sources */,
 				50BB3FE52970459B00C6F98E /* Carre.swift in Sources */,
 				50594D99297565D100CFD2F3 /* CoupsObliges.swift in Sources */,
 				505F1A8E2978584A0075E218 /* RayonnementIndirect.swift in Sources */,

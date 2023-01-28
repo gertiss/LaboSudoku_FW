@@ -21,15 +21,34 @@ public struct ContrainteCasePaire : Hashable, Codable {
     }
 }
 
+/// On suppose la case vide. On élimine toutes les valeurs provenant des émetteurs qui dans la zone couverte par le radar de la cellule.
 public extension Grille {
+    
+    /// Quelles valeurs peut-on mettre dans la cellule ?
     func valeursCandidates(cellule: Case) -> Set<Int> {
-        // pour chaque valeur, parcourir les "radars" de la cellule et éliminer les valeurs impossibles
-        // garder les valeurs possibles si elles forment une paire.
-        fatalError()
+        assert(caseEstVide(cellule))
+        var ensembleCandidates: Set<Int> = Set(1...9)
+        var ensembleValeursEmetteurs = Set<Int>()
+        for n in 1...9 {
+            for caseRadar in Grille.radar(cellule) {
+                if caseEstOccupee(caseRadar) {
+                    ensembleValeursEmetteurs.insert(n)
+                }
+            }
+        }
+        return ensembleCandidates.subtracting(ensembleValeursEmetteurs)
     }
     
-    func valeursCandidates(paireCellules: Set<Case>) -> Set<Int> {
-        // pour chaque paire de cellules, appliquer valeursCandidates(cellule)
-        fatalError()
+    /// Où peut-on mettre la valeur dans la zone ?
+    func cellulesCandidates<Zone: UneZone>(valeur: Int, dans zone: Zone) -> Set<Case> {
+        var ensemble = Set<Case>()
+        for cellule in zone.lesCases {
+            let valeursCandidates = valeursCandidates(cellule: cellule)
+            if valeursCandidates.contains(valeur) {
+                ensemble.insert(cellule)
+            }
+        }
+        return ensemble
     }
+    
 }

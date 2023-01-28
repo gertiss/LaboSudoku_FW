@@ -36,19 +36,19 @@ public extension CoupAvecExplication {
     
     var strategie: Strategie {
         switch focalisation {
-        case .zoneValeur:
-            return .eliminationCases
-        case .zoneCase:
-            return .eliminationValeurs
+        case .valeurZone:
+            return .rechercheDeCasesPourValeur
+        case .cellule:
+            return .rechercheDeValeursPourCase
         }
     }
     
     var explication: String {
         switch focalisation {
-        case .zoneValeur(_):
-            return "\(coup.valeur) dans \(coup.cellule.nom)"
-        case .zoneCase(_):
-            return "\(coup.cellule.nom) reçoit \(coup.valeur)"
+        case .valeurZone(let fValeurZone):
+            return "\(coup.valeur) ? Dans \(fValeurZone.zone.nom) : \(coup.cellule.nom) = \(coup.valeur)"
+        case .cellule(_):
+            return "\(coup.cellule.nom) ? \(coup.valeur)"
         }
     }
 }

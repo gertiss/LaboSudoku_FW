@@ -148,6 +148,7 @@ final class LaboSudoku_FWTests: XCTestCase {
 
         print(grille.texte)
         print(grille.partie.succes)
+        print(grille.partie.deroulement)
     }
     
     func testLeMondeFacile2() {
@@ -222,11 +223,13 @@ I · · · · 5 · · · ·
             coup = grille.premierCoup
         }
         
+        // Succès
         if grille.estSolution {
             print("\nSuccès")
         } else {
             print("\nEchec")
         }
+        XCTAssert(grille.estSolution)
     }
     
     func testPartieDifficile() {
@@ -234,7 +237,7 @@ I · · · · 5 · · · ·
         print(grille.texte)
         let partie = grille.partie
         partie.coups.forEach { print($0.explication) }
-        print("succès:", partie.succes)
+        print("succès:", partie.succes) // Blocage ?
 
     }
     
@@ -243,7 +246,7 @@ I · · · · 5 · · · ·
         print(grille.texte)
         let partie = grille.partie
         partie.coups.forEach { print($0.explication) }
-        print("succès:", partie.succes)
+        print("succès:", partie.succes) // Blocage ?
 
     }
     

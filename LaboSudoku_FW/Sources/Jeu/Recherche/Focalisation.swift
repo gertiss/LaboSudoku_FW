@@ -8,6 +8,6 @@
 import Foundation
 
 public enum Focalisation: Hashable, Codable {
-    case zoneValeur(FocalisationZoneValeur)
-    case zoneCase(FocalisationZoneCase)
+    case valeurZone(FocalisationValeurZone)
+    case cellule(FocalisationCellule)
 }

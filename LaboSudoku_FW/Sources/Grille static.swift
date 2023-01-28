@@ -17,8 +17,7 @@ extension Grille {
     public static let lesColonnes: [Colonne] = calculColonnes
     public static let lesCarres: [Carre] = calculCarres
     public static let lesZones: [any UneZone] = calculZones
-    public static let lesZonesPourEliminationCases: [any UneZone] = calculZonesPourEliminationCases
-    public static let lesZonesPourEliminationValeurs: [any UneZone] = calculZonesPourEliminationValeurs
+    public static let lesZonesPourRechercheDeCases: [any UneZone] = calculZonesPourRechercheDeCases
     
     
     public static let nomsLignes = "ABCDEFGHI".map { String($0) }
@@ -76,16 +75,11 @@ extension Grille {
         calculCarres + calculLignes + calculColonnes
     }
     
-    /// La liste des zones dans un ordre favorable à l'élimination de valeurs
-    private static var calculZonesPourEliminationValeurs: [any UneZone] {
-        calculLignes + calculColonnes + calculCarres
+    /// La liste des zones dans un ordre a priori heuristiquement  favorable à la recherche de cases
+    private static var calculZonesPourRechercheDeCases: [any UneZone] {
+        calculZones
     }
-    
-    /// La liste des zones dans un ordre favorable à l'élimination de cases
-    private static var calculZonesPourEliminationCases : [any UneZone] {
-        calculCarres + calculLignes + calculColonnes
-    }
-    
+        
     public static func lesZones(type: TypeZone) -> [any UneZone] {
         switch type {
         case .carre:

@@ -7,15 +7,16 @@
 
 import Foundation
 
-/// Une focalisation par rayonnement se focalise sur une zone et une valeur,
-/// de manière à appliquer l'élimination par rayonnement.
-/// La question  est : quelles sont las cases interdites/possibles par rayonnement pour cette valeur dans cette zone ?
-public enum FocalisationZoneValeur: Hashable, Codable {
+/// La question  est : quelles sont las cases interdites/possibles pour cette valeur dans cette zone ?
+/// "Interdite" signifie : vide et dans le champ d'un émetteur de la valeur.
+/// "possible" est le contraire de "interdite".
+public enum FocalisationValeurZone: Hashable, Codable {
     case carre(Carre, Int)
     case ligne(Ligne, Int)
     case colonne(Colonne, Int)
     
-    public static func avec<Zone: UneZone>(zone: Zone, valeur: Int) -> FocalisationZoneValeur {
+    /// Fonction créatrice d'instances
+    public static func avec<Zone: UneZone>(valeur: Int, zone: Zone) -> FocalisationValeurZone {
         switch zone.type {
         case .carre:
             return .carre(zone as! Carre, valeur)
@@ -28,7 +29,7 @@ public enum FocalisationZoneValeur: Hashable, Codable {
 }
 
 
-public extension FocalisationZoneValeur {
+public extension FocalisationValeurZone {
     
     /// La valeur sur laquelle on se focalise
     var valeur: Int {
@@ -66,7 +67,8 @@ public extension FocalisationZoneValeur {
         }
     }
     
-    /// Les cases interdites dans la zone pour la valeur, dans une grille donnée
+    /// Les cases interdites dans la zone pour la valeur, dans une grille donnée.
+    /// "Interdite" signifie : vide et dans le champ d'un émetteur de la valeur.
     func casesInterdites(pour grille: Grille) -> Set<Case> {
         switch self {
         case .carre(let carre, let int):
@@ -78,11 +80,12 @@ public extension FocalisationZoneValeur {
         }
     }
     
-    /// Les cases possibles dans la zone pour la valeur, dans une grille donnée
+    /// Les cases possibles dans la zone pour la valeur, dans une grille donnée.
     func casesPossibles(pour grille: Grille) -> Set<Case> {
         cases.subtracting(casesInterdites(pour: grille))
     }
     
+    /// On retourne une case si c'est la seule possible pour la grille, nil sinon
     func uniqueCasePossible(pour grille: Grille) -> Case? {
         casesPossibles(pour: grille).uniqueValeur
     }
