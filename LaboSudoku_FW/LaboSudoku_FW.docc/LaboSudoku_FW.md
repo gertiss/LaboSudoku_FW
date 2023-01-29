@@ -4,8 +4,10 @@ Un laboratoire d'expérimentation du Sudoku, pour découvrir, explorer, comprend
 
 Lors de la résolution, l'état de la grille et des connaissances sur cette grille est donné par un ensemble de faits du type :
 
-Il y a une bijection de C (un ensemble de cases) vers V (un ensemble de valeurs).
+	Il y a une bijection de C (un ensemble de cases) vers V (un ensemble de valeurs).
+	
 C est une "zone de bijection". 
+
 Au départ il y en a 27 : lignes, colonnes et carrés, et elles sont en bijection avec l'ensemble 1...9
 Ce sont toutes des restrictions d'une application "valeur" de l'ensemble des 81 cases dans l'ensemble des 9 chiffres.
 
@@ -93,7 +95,9 @@ Mais il faut aussi des fonctions de recherche heuristique qui permettent de savo
 
 ## Découverte des liens
 
-### Liens unaires (1 valeur, 2 cases)
+### Liens unaires 
+
+#### 1 valeur, 2 cases
 
 Lorsqu'on cherche à placer une valeur dans une zone ("où sont les cases possibles pour cette valeur dans cette zone ?") et qu'on constate qu'il n'y a que deux cases possibles, on note un lien unaire (cette valeur, ces deux cases). Ce lien est indépendant de la focalisation initiale sur la zone, il est valable pour toutes les zones qui contiennent les deux cases.
 
@@ -103,7 +107,7 @@ On pourrait avoir un dictionnaire : valeur -> couples de cases
 
 Deux cases sont liées par une valeur. Si une zone contient ces deux cases, alors les autres valeurs sont interdites pour les autres cases de la zone. Cela interviendra quand pour ces cases on se posera la question "cette valeur peut-elle aller dans cette case (dans la même zone) ?". Si la case est différente de case1 et case2, la réponse sera non.
 
-### 1 case, 2 valeurs
+#### 1 case, 2 valeurs
 
 Lorsqu'on cherche à remplir une case par des valeurs ("quelles sont les valeurs possibles pour cette case ?") et qu'on constate qu'il n'y a que deux valeurs possibles, on note ce fait (cette case, ces valeurs).
 
@@ -122,4 +126,5 @@ Lorsqu'on a découvert deux liens unaires pour le même couple de cases avec des
 dictionnaire : couple de valeurs -> couples de cases
 
 Deux cases sont liées entre elles par deux valeurs. Si une zone contient ces deux cases, alors les autres valeurs sont interdites pour les autres cases de la zone et les autres cases de la zone sont interdites pour chacune des deux valeurs. Donc ce lien peut intervenir dans chacun des types de recherche "où placer telle valeur ?" pour une valeur différente de valeur1 et valeur2 (la réponse sera "pas dans les  cases case1 ni case2") et "comment remplir cette case ?" pour une case différente de case1 et case2 (la réponse sera "pas avec valeur1 ni valeur2")
+
 

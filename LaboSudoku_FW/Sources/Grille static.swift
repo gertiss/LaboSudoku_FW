@@ -91,6 +91,10 @@ extension Grille {
         }
     }
     
+    /// L'ensemble des 20 cases "dépendantes" de la case `cellule`
+    /// Ce sont les 20 cases qui sont dans le champ de vision de la cellule : ligne, colonne, carré
+    /// Toute valeur présente dans ce champ interdit la valeur dans la cellule.
+    /// Métaphore : quand la cellule repère une valeur dans son radar, elle sait qu'elle ne peut pas contenir cette valeur
     public static func radar(_ cellule: Case) -> Set<Case> {
         var ensemble = Set<Case>()
         let indexLigne = cellule.indexLigne
@@ -99,6 +103,7 @@ extension Grille {
         ensemble = ensemble.union(Colonne(indexColonne).lesCases)
         ensemble = ensemble.union(Carre(indexLigne / 3, indexColonne / 3).lesCases)
         ensemble.remove(cellule)
+        assert(ensemble.count == 20)
         return ensemble
     }
     

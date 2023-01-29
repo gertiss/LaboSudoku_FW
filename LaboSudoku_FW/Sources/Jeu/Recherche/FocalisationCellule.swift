@@ -39,6 +39,11 @@ public extension FocalisationCellule {
     func uniqueValeurPossible(pour grille: Grille) -> Int? {
         valeursPossibles(pour: grille).uniqueValeur
     }
+    
+    func uniquePairePossible(pour grille: Grille) -> Set<Int>? {
+        let valeursCandidates = valeursPossibles(pour: grille)
+        return valeursCandidates.count == 2 ? valeursCandidates : nil
+    }
 
     
 }

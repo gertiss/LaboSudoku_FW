@@ -89,7 +89,12 @@ public extension FocalisationValeurZone {
     func uniqueCasePossible(pour grille: Grille) -> Case? {
         casesPossibles(pour: grille).uniqueValeur
     }
-
+    
+    func uniquePairePossible(pour grille: Grille) -> Set<Case>? {
+        let casesCandidates = casesPossibles(pour: grille)
+        return casesCandidates.count == 2 ? casesCandidates : nil
+    }
+    
 }
 
 

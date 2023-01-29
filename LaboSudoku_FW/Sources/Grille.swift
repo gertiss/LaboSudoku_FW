@@ -157,6 +157,14 @@ public extension Grille {
         return nil
     }
     
+    var premierePaireDeCases: Set<Case>? {
+        Recherche(strategie: .rechercheDeCasesPourValeur).premierePaireDeCases(pour: self)
+    }
+    
+    var pairesDeCases: Set<PaireUneValeurDeuxCases> {
+        Recherche(strategie: .rechercheDeCasesPourValeur).pairesDeCases(pour: self)
+    }
+    
     /// Retourne tous les coups trouvés jusqu'à succès ou blocage
     var partie: Partie {
         var listeCoups = [CoupAvecExplication]()
@@ -221,29 +229,3 @@ public extension Grille {
 
 }
 
-// MARK: - Debug
-
-public extension Grille {
-        
-    /// On affiche le premier coup éventuel
-    func printDansConsoleXcode() {
-        if let premierCoup {
-            print(premierCoup.explication)
-            return
-        }
-        guard estValide else {
-            print("Erreur: grille non valide")
-            return
-        }
-        if estSolution {
-            print("Terminé avec succès")
-            return
-        }
-        let reste = Grille.lesCases.filter {
-            caseEstVide($0)
-        }
-        print("Blocage : il reste \(reste.count) cases")
-        return
-    }
-    
-}

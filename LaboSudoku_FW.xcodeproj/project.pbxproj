@@ -37,6 +37,8 @@
 		50BB3FED297055CE00C6F98E /* UneGrille.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEC297055CE00C6F98E /* UneGrille.swift */; };
 		50BB3FEF2970995B00C6F98E /* Grille Exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */; };
 		50C9D3F7297B088D004A43BB /* Bijection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9D3F6297B088D004A43BB /* Bijection.swift */; };
+		50E9133F2985A20D00B80C31 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9133E2985A20D00B80C31 /* Debug.swift */; };
+		50E913412985B43500B80C31 /* PaireUneValeurDeuxCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E913402985B43500B80C31 /* PaireUneValeurDeuxCases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		50BB3FEC297055CE00C6F98E /* UneGrille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneGrille.swift; sourceTree = "<group>"; };
 		50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grille Exemples.swift"; sourceTree = "<group>"; };
 		50C9D3F6297B088D004A43BB /* Bijection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bijection.swift; sourceTree = "<group>"; };
+		50E9133E2985A20D00B80C31 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
+		50E913402985B43500B80C31 /* PaireUneValeurDeuxCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaireUneValeurDeuxCases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,7 @@
 				50BB3FE02970457E00C6F98E /* Ligne.swift */,
 				50BB3FE6297045A300C6F98E /* Colonne.swift */,
 				50BB3FEA2970551300C6F98E /* Coup.swift */,
+				50E913402985B43500B80C31 /* PaireUneValeurDeuxCases.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 				5079BCE7297EF8340036C6B6 /* Partie.swift */,
 				50B134E32982AFC100B735DF /* ContrainteValeurPaireDansCarre.swift */,
 				50B134E52982AFDB00B735DF /* ContrainteCasePaire.swift */,
+				50E9133E2985A20D00B80C31 /* Debug.swift */,
 			);
 			path = Recherche;
 			sourceTree = "<group>";
@@ -309,7 +315,9 @@
 				50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */,
 				50BB3FEF2970995B00C6F98E /* Grille Exemples.swift in Sources */,
 				50121796297D24A000F4953D /* FocalisationValeurZone.swift in Sources */,
+				50E9133F2985A20D00B80C31 /* Debug.swift in Sources */,
 				50105D25297FC10B004731E1 /* Problèmes faciles.swift in Sources */,
+				50E913412985B43500B80C31 /* PaireUneValeurDeuxCases.swift in Sources */,
 				50B134E82982B1F500B735DF /* Grille static.swift in Sources */,
 				50105D27297FD4FF004731E1 /* Problèmes moyens.swift in Sources */,
 				5079BCE4297E890B0036C6B6 /* FocalisationCellule.swift in Sources */,
