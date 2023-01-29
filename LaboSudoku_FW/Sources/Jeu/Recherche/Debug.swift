@@ -18,6 +18,7 @@ public extension Grille {
             print("Coup:")
             print(premierCoup.explication)
         }
+        print("aucun coup trouvé")
         guard estValide else {
             print("Erreur: grille non valide")
             return

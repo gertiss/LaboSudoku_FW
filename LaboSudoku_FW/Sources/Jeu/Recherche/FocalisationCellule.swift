@@ -20,24 +20,20 @@ public struct FocalisationCellule: Hashable, Codable {
 
 public extension FocalisationCellule {
     
-    /// Les valeurs impossibles pour la case dans la zone, pour une grille donnée
-    /// Ce sont les valeurs qui sont visibles dans les "radars" de la cellule.
-    func valeursInterdites(pour grille: Grille) -> Set<Int> {
-        var ensemble = Set<Int>()
-        for zone in Grille.lesZones {
-            ensemble = ensemble.union(grille.valeursElimineesParRayonnementOuPresentesDansZone(pour: cellule, dans: zone))
-        }
-        return ensemble
-    }
     
     /// Les valeurs possibles pour la case dans la zone, pour une grille donnée
     func valeursPossibles(pour grille: Grille) -> Set<Int> {
-        Set<Int>(1...9).subtracting(valeursInterdites(pour: grille))
+             let interdites = Grille.radar(cellule)
+                .filter { grille.caseEstOccupee($0) }
+                .map { grille.valeur($0) }
+                .ensemble
+        return Set(1...9).subtracting(interdites)
     }
     
     /// On retourne une valeur si c'est la seule possible pour la grille, nil sinon
     func uniqueValeurPossible(pour grille: Grille) -> Int? {
-        valeursPossibles(pour: grille).uniqueValeur
+        if grille.caseEstOccupee(cellule) { return nil }
+        return valeursPossibles(pour: grille).uniqueValeur
     }
     
     func uniquePairePossible(pour grille: Grille) -> Set<Int>? {
