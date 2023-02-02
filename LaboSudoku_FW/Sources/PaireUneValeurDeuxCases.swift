@@ -77,16 +77,3 @@ public extension Set<PaireUneValeurDeuxCases> {
     }
 }
 
-struct FocalisationValeur {
-    var valeur: Int
-    
-    func dansZone(_ zone: some UneZone) -> FocalisationValeurZone {
-        FocalisationValeurZone.avec(valeur: valeur, zone: zone)
-    }
-}
-
-extension FocalisationValeurZone {
-    var avecOubliDeZone: FocalisationValeur {
-        FocalisationValeur(valeur: valeur)
-    }
-}

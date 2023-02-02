@@ -30,6 +30,7 @@ public extension Recherche {
         var trouve = false
         switch strategie {
         case .rechercheDeCasesPourValeur:
+            // TODO: Il faudrait profiter de cette recherche pour rechercher les émetteurs secondaires et leur faire éliminer d'autres cases.
             for zone in Grille.lesZonesPourRechercheDeCases {
                 for valeur in 1...9 {
                     let focalisation = FocalisationValeurZone.avec(valeur: valeur, zone: zone)

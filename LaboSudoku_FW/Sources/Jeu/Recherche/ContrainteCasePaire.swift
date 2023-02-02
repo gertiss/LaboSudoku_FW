@@ -27,7 +27,7 @@ public extension Grille {
     /// Quelles valeurs peut-on mettre dans la cellule ?
     func valeursCandidates(cellule: Case) -> Set<Int> {
         assert(caseEstVide(cellule))
-        var ensembleCandidates: Set<Int> = Set(1...9)
+        let ensembleCandidates: Set<Int> = Set(1...9)
         var ensembleValeursEmetteurs = Set<Int>()
         for n in 1...9 {
             for caseRadar in Grille.radar(cellule) {

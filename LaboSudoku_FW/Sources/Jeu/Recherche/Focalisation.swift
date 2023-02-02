@@ -11,3 +11,17 @@ public enum Focalisation: Hashable, Codable {
     case valeurZone(FocalisationValeurZone)
     case cellule(FocalisationCellule)
 }
+
+struct FocalisationValeur {
+    var valeur: Int
+    
+    func dansZone(_ zone: some UneZone) -> FocalisationValeurZone {
+        FocalisationValeurZone.avec(valeur: valeur, zone: zone)
+    }
+}
+
+extension FocalisationValeurZone {
+    var avecOubliDeZone: FocalisationValeur {
+        FocalisationValeur(valeur: valeur)
+    }
+}

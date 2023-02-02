@@ -8,12 +8,6 @@
 import Foundation
 
 public struct Carre: UneZone {
-    public var nom: String {
-        let nomsBandesH = ["M", "N", "P"]
-        let nomsBandesV = ["m", "n", "p"]
-        return "le carré \(nomsBandesH[bandeH])\(nomsBandesV[bandeV])"
-   }
-    
     public var type: TypeZone = .carre
 
     public let bandeH: Int // de 0 à 2
@@ -25,6 +19,12 @@ public struct Carre: UneZone {
         self.bandeH = bandeH
         self.bandeV = bandeV
     }
+    
+    public var nom: String {
+        let nomsBandesH = ["M", "N", "P"]
+        let nomsBandesV = ["m", "n", "p"]
+        return "le carré \(nomsBandesH[bandeH])\(nomsBandesV[bandeV])"
+   }
     
     public var description: String {
         "Carre(\(bandeH), \(bandeV))"

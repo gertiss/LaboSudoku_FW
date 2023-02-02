@@ -264,10 +264,10 @@ I · · · · 5 · · · ·
         let recherche = Recherche(strategie: .rechercheDeValeursPourCase)
         let coup = recherche.premierCoup(pour: grille)
         XCTAssertNotNil(coup)
+        XCTAssertEqual(coup?.coup, Coup(Case(1, 5), 5))
         print(coup?.explication ?? "nil")
         // On doit trouver Bf 5
         
-        print(grille.premierCoup)
     }
 
 
