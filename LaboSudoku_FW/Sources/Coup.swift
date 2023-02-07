@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct Coup: UtilisableCommeAtome {
+/// Un Coup est un singleton
+public struct Coup: Testable {
     public var cellule: Case
     public var valeur: Int // de 1 à 9
     

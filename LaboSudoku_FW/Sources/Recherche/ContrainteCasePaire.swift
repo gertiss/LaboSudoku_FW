@@ -22,7 +22,7 @@ public struct ContrainteCasePaire : Hashable, Codable {
 }
 
 /// On suppose la case vide. On élimine toutes les valeurs provenant des émetteurs qui dans la zone couverte par le radar de la cellule.
-public extension Grille {
+public extension GrilleAvecContenu {
     
     /// Quelles valeurs peut-on mettre dans la cellule ?
     func valeursCandidates(cellule: Case) -> Set<Int> {
@@ -30,7 +30,7 @@ public extension Grille {
         let ensembleCandidates: Set<Int> = Set(1...9)
         var ensembleValeursEmetteurs = Set<Int>()
         for n in 1...9 {
-            for caseRadar in Grille.radar(cellule) {
+            for caseRadar in GrilleAvecContenu.radar(cellule) {
                 if caseEstOccupee(caseRadar) {
                     ensembleValeursEmetteurs.insert(n)
                 }

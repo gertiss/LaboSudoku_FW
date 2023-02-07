@@ -8,9 +8,9 @@
 import Foundation
 
 // MARK: - Static
-extension Grille {
+extension GrilleAvecContenu {
     
-    public static let vide = Grille()
+    public static let vide = GrilleAvecContenu()
         
     public static let lesCases: [Case] = calculCases
     static let lesLignes: [Ligne] = calculLignes
@@ -105,6 +105,28 @@ extension Grille {
         ensemble.remove(cellule)
         assert(ensemble.count == 20)
         return ensemble
+    }
+    
+}
+
+public extension GrilleAvecContenu {
+    
+    /// Le code est une ligne de la banque de grilles
+    /// publiée sur Sudoku Exchange "Puzzle Bank"
+    /// https://sudokuexchange.com
+    /// Format : id (12)  espace (1) chiffres (81) espace (2) niveau (3)
+    init(_ codeBank: String) {
+        let codage = CodageBank(codeBank)
+        let chiffres = codage.chiffres
+        
+        var grille = GrilleAvecContenu()
+        for indexLigne in 0...8 {
+            for indexColonne in 0...8 {
+                let chiffre = chiffres[indexLigne * 9 + indexColonne]
+                grille.contenu[indexLigne][indexColonne] = chiffre
+            }
+        }
+        self = grille
     }
     
 }

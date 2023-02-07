@@ -2,7 +2,7 @@
 
 Un laboratoire d'expérimentation du Sudoku, pour découvrir, explorer, comprendre, apprendre.
 
-Lors de la résolution, l'état de la grille et des connaissances sur cette grille contient entre autres un ensemble de faits du type :
+Lors de la résolution, l'état de la grilleAvecContenu et des connaissances sur cette grilleAvecContenu contient entre autres un ensemble de faits du type :
 
 	Il y a une bijection de C (un ensemble de cases) vers V (un ensemble de valeurs).
 	
@@ -23,14 +23,14 @@ Même genre de chose éventuellement avec les triplets de cases et de valeurs.
 
 Chacun de ces événements produit en réaction une mise à jour de la base de faits (on l'augmente et/ou on la spécialise, on la minimise). Chaque bijection peut se restreindre. Quand une bijection se restreint à un couple de singletons (case, valeur), alors c'est un coup obligé. Quand une bijection se restreint à DeuxCasesDeuxValeurs, on peut en déduire des éliminations.
 
-Une grille vide a 27 bijections de 9 cases vers 9 valeurs.
+Une grilleAvecContenu vide a 27 bijections de 9 cases vers 9 valeurs.
 Chaque événement restreint les bijections des 3 zones auxquelles la case appartient : ligne, colonne, carré.
 
 Une étape du raisonnement consiste à découvrir une bijection qu'on peut restreindre, ou plus généralement un événement. On peut la découvrir en se focalisant sur un ensemble de cases ou sur un ensemble de valeurs.
 
 Mais une focalisation de ce type n'est pas forcément confondue avec un objectif de recherche. Quand on se focalise sur la valeur 1, le raisonnement peut amener à découvrir que la valeur 2 doit aller dans une certaine case, par sérendipité.
 
-L'objectif est opportuniste : découvrir un événement quelconque, et en tirer des conséquences. Parmi ces conséquences, il y a des actions d'annotation : on note quelque chose de nouveau sur la grille, ou on modifie l'ensemble des annotations de la grille. On sait qu'on a fini quand toute la grille est remplie d'annotations de type (cellule = valeur) d'une manière conforme à la règle.
+L'objectif est opportuniste : découvrir un événement quelconque, et en tirer des conséquences. Parmi ces conséquences, il y a des actions d'annotation : on note quelque chose de nouveau sur la grilleAvecContenu, ou on modifie l'ensemble des annotations de la grilleAvecContenu. On sait qu'on a fini quand toute la grilleAvecContenu est remplie d'annotations de type (cellule = valeur) d'une manière conforme à la règle.
 
 ## Règles
 
@@ -54,12 +54,12 @@ Ces règles sont indirectes parce qu'elles ne permettent pas de trouver directem
 
 ## Etapes de jeu
 
-Une partie se déroule en plusieurs étapes de raisonnement, chaque étape donnant lieu à  l'affirmation d'un fait qu'on mémorise en l'écrivant de manière symbolique dans la grille, c'est-à-dire une annotation.
+Une partie se déroule en plusieurs étapes de raisonnement, chaque étape donnant lieu à  l'affirmation d'un fait qu'on mémorise en l'écrivant de manière symbolique dans la grilleAvecContenu, c'est-à-dire une annotation.
 
 Les principaux types de contraintes humainement détectables et mémorisables sont :
 
 - valeur d'une case : telle case ne peut recevoir que telle valeur. Action: on écrit la valeur dans la case.
-- annotation des valeurs candidates pour une case dans la grille. Cas particulier : une case, deux valeurs (telle case ne peut recevoir que ces deux valeurs). Action : on écrit ces valeurs avec un formalisme spécial dans la case. Il est raisonnable de se limiter à 1, 2 ou 3 valeurs.
+- annotation des valeurs candidates pour une case dans la grilleAvecContenu. Cas particulier : une case, deux valeurs (telle case ne peut recevoir que ces deux valeurs). Action : on écrit ces valeurs avec un formalisme spécial dans la case. Il est raisonnable de se limiter à 1, 2 ou 3 valeurs.
 - annotation de cases candidates pour une valeur dans une zone. Cas particulier : une valeur, deux cases (telle valeur ne peut aller que dans une de ces deux cases). Action : on écrit cette valeur avec un formalisme spécial en lien avec les deux cases. Il est raisonnable de se limiter à 1, 2, ou 3 cases.
 - annotation de bijection dans une zone. Cas particulier : deux cases, deux valeurs (il y a une bijection entre ces deux cases et ces deux valeurs). Action : on écrit ces deux valeurs avec un formalisme spécial en lien avec ces deux cases. C'est la fusion de deux annotations de type (une valeur, deux cases) pour les deux mêmes cases, ou (une case, deux valeurs) pour les deux mêmes valeurs. Une telle fusion produit quelque chose de plus puissant que chacune des annotations déclencheuses. On peut éventuellement envisager la fusion de trois annotations de type (une valeur, trois cases) pour les mêmes trois cases, ou (une case, trois valeurs) pour les mêmes trois valeurs.
 
@@ -67,7 +67,7 @@ Le fait "valeur d'une case" n'est qu'un cas particulier du fait "bijection" : il
 
 ## Contraintes 
 
-Ce qu'il y a d'écrit dans une grille constitue une base de contraintes. Le but est d'arriver à résoudre le problème en se limitant à cette base de contraintes. Toute étape du jeu modifie la base de contraintes.
+Ce qu'il y a d'écrit dans une grilleAvecContenu constitue une base de contraintes. Le but est d'arriver à résoudre le problème en se limitant à cette base de contraintes. Toute étape du jeu modifie la base de contraintes.
 
 La forme la plus générale d'un fait est d'un des deux types suivants (sous forme de prédicats) :
 

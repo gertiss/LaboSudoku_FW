@@ -31,18 +31,18 @@ public struct Ligne: UneZone {
 public extension Ligne {
     
     var nom: String {
-        return "la ligne " + Grille.nomsLignes[index]
+        return "la ligne " + GrilleAvecContenu.nomsLignes[index]
     }
     
-    func texte(dans grille: Grille) -> String {
+    func texte(dans grilleAvecContenu: GrilleAvecContenu) -> String {
         let txtValeurs = (0...8)
             .map { co in
-                let valeur = grille.valeur(Case(index, co))
+                let valeur = grilleAvecContenu.valeur(Case(index, co))
                 return valeur == 0 ? "·" : "\(valeur)"
             }
             .joined(separator: " ")
         
-        return "\(Grille.nomsLignes[index]) \(txtValeurs)"
+        return "\(GrilleAvecContenu.nomsLignes[index]) \(txtValeurs)"
 
         
     }

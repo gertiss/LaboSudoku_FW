@@ -13,7 +13,7 @@ import Foundation
 // une fois qu'on a éliminé les valeurs impossibles à cause du rayonnement ?
 // On doit examiner les 20 cases qui sont dans le champ du rayonnement.
 
-extension Grille {
+extension GrilleAvecContenu {
 
     /// Les valeurs qui restent possibles pour la case après élimination  des valeurs présentes dans sa ligne, sa cellule et son carré par le procédé du rayonnement. Si la case est occupée, on rend l'ensemble vide car la valeur n'est pas "manquante".
     /// C'est le procédé d'élimination directe par rayonnement.
@@ -24,17 +24,17 @@ extension Grille {
         var ensemble: Set<Int> = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         
         // Elimination de toutes les valeurs présentes dans la ligne
-        Grille.ligne(cellule).lesCases.forEach {
+        GrilleAvecContenu.ligne(cellule).lesCases.forEach {
             ensemble.remove(valeur($0))
         }
 
         // Elimination de toutes les valeurs présentes dans la colonne
-        Grille.colonne(cellule).lesCases.forEach {
+        GrilleAvecContenu.colonne(cellule).lesCases.forEach {
             ensemble.remove(valeur($0))
         }
 
         // Elimination de toutes les valeurs présentes dans le carré
-        Grille.carre(cellule).lesCases.forEach {
+        GrilleAvecContenu.carre(cellule).lesCases.forEach {
             ensemble.remove(valeur($0))
         }
         return ensemble

@@ -23,7 +23,7 @@ public struct ContrainteValeurPaireDansCarre : Hashable, Codable {
     
 }
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     func casesCandidates(valeur: Int, carre: Carre) -> Set<Case> {
         // Pour chaque émetteur, parcourir les rayons et éliminer les cases impossibles.

@@ -8,11 +8,12 @@
 import Foundation
 
 
-public struct Grille: UneGrille {
+public struct GrilleAvecContenu: UneGrilleAvecContenu {
+    
     
     /// La valeur d'une case s'obtient par contenu[indexLigne][indexColonne].  0 si case vide
     /// Voir fonction d'accès valeur(cellule:)
-    private var contenu: [[Int]]
+    var contenu: [[Int]]
     public var commentaire: String
     
     // Indexation des paires
@@ -42,7 +43,7 @@ public struct Grille: UneGrille {
 
 // MARK: - Etat actuel de remplissage
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     /// Valeur de 0 à 9, 0 signifiant valeur inconnue.
     func valeur(_ cellule: Case) -> Int {
@@ -70,7 +71,7 @@ public extension Grille {
     
     /// L'ensemble de toutes les cases qui contiennent le chiffre
     func casesRemplies(avec chiffre: Int) -> Set<Case> {
-        Grille.lesCases.filter { valeur($0) == chiffre }.ensemble
+        GrilleAvecContenu.lesCases.filter { valeur($0) == chiffre }.ensemble
     }
     
     func casesOccupees(dans carre: Carre) -> Set<Case> {
@@ -80,7 +81,7 @@ public extension Grille {
 
 // MARK: - Jeu
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     func validite(_ leCoup: Coup) -> Result<Bool, String> {
         let (ligne, colonne) = (leCoup.cellule.indexLigne, leCoup.cellule.indexColonne)
@@ -113,7 +114,7 @@ public extension Grille {
         validite(coup).estSucces
     }
     
-    func plus(_ unCoup: Coup) -> Result<Grille, String> {
+    func plus(_ unCoup: Coup) -> Result<GrilleAvecContenu, String> {
         if let message = validite(unCoup).erreur {
             return .failure(message)
         }
@@ -123,22 +124,22 @@ public extension Grille {
         return .success(copie)
     }
     
-    func moins(_ uneCase: Case) -> Grille {
+    func moins(_ uneCase: Case) -> GrilleAvecContenu {
         let (ligne, colonne) = (uneCase.indexLigne, uneCase.indexColonne)
         var copie = self
         copie.contenu[ligne][colonne] = 0
         return copie
     }
     
-    /// Une grille est valide si ses 27 zones sont valides.
-    /// Ici il n'est pas nécessaire que la grille soit complètement remplie.
+    /// Une grilleAvecContenu est valide si ses 27 zones sont valides.
+    /// Ici il n'est pas nécessaire que la grilleAvecContenu soit complètement remplie.
     /// C'est une validté partielle, provisoire.
     var estValide: Bool {
-        Grille.lesZones.allSatisfy { estValide($0) }
+        GrilleAvecContenu.lesZones.allSatisfy { estValide($0) }
     }
     
     var estSolution: Bool {
-        estValide && Grille.lesCases.allSatisfy { !caseEstVide($0) }
+        estValide && GrilleAvecContenu.lesCases.allSatisfy { !caseEstVide($0) }
     }
     
     
@@ -157,49 +158,59 @@ public extension Grille {
         return nil
     }
     
-    var premierePaireDeCases: Set<Case>? {
-        Recherche(strategie: .rechercheDeCasesPourValeur).premierePaireDeCases(pour: self)
+    var coups: Set<Coup> {
+        Recherche(strategie: .rechercheDeCasesPourValeur).coups(pour: self)
+            .union(Recherche(strategie: .rechercheDeValeursPourCase).coups(pour: self))
     }
     
-    var pairesDeCases: Set<PaireUneValeurDeuxCases> {
-        Recherche(strategie: .rechercheDeCasesPourValeur).pairesDeCases(pour: self)
+    
+    var premierePaireDeCases: Set<Case>? {
+        Recherche(strategie: .rechercheDeCasesPourValeur).premierePaireUneValeurDeuxCases(pour: self)
+    }
+    
+    var pairesUneValeurDeuxCases: Set<PaireUneValeurDeuxCases> {
+        Recherche(strategie: .rechercheDeCasesPourValeur).pairesUneValeurDeuxCases(pour: self)
+    }
+    
+    var pairesDeuxValeursDeuxCases: Set<PaireDeuxValeursDeuxCases> {
+        Recherche(strategie: .rechercheDeCasesPourValeur).pairesDeuxValeursDeuxCases(pour: self)
     }
     
     /// Retourne tous les coups trouvés jusqu'à succès ou blocage
     var partie: Partie {
         var listeCoups = [CoupAvecExplication]()
-        var grille = self
+        var grilleAvecContenu = self
         var coup = premierCoup
         while coup != nil {
             let premierCoup = coup!
             assert(!listeCoups.contains(premierCoup))
             listeCoups.append(premierCoup)
-            grille = grille.plus(premierCoup.coup).valeur!
-            coup = grille.premierCoup
+            grilleAvecContenu = grilleAvecContenu.plus(premierCoup.coup).valeur!
+            coup = grilleAvecContenu.premierCoup
         }
-        return Partie(grilleInitiale: self, coups: listeCoups, succes: grille.estSolution)
+        return Partie(grilleInitiale: self, coups: listeCoups, succes: grilleAvecContenu.estSolution)
     }
     
 }
 
 // MARK: - Codage JSON
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
-    static func avecCode(_ code: String) -> Result<Grille, String> {
+    static func avecCodeJSON(_ codeJSON: String) -> Result<GrilleAvecContenu, String> {
         let decoder = JSONDecoder()
-        guard let data = code.data(using: .utf8) else {
+        guard let data = codeJSON.data(using: .utf8) else {
             return .failure("Decodage: Impossible de créer data. Le code est censé être du json valide en utf8")
         }
         do {
-            let instance = try decoder.decode(Grille.self, from: data)
+            let instance = try decoder.decode(GrilleAvecContenu.self, from: data)
             return .success(instance)
         } catch {
             return .failure("Erreur de décodage json : \(error)")
         }
     }
     
-    var code: Result<String, String> {
+    var codeJSON: Result<String, String> {
         do {
             let encoder = JSONEncoder()
             let data = try encoder.encode(self)
@@ -217,11 +228,11 @@ public extension Grille {
 
 // MARK: - Représentation en texte
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
-    /// La représentation d'une grille sous forme de "texte graphique"
+    /// La représentation d'une grilleAvecContenu sous forme de "texte graphique"
     var texte: String {
-        Grille.enTeteColonnes + "\n" +
+        GrilleAvecContenu.enTeteColonnes + "\n" +
         (0...8)
             .map { Ligne($0).texte(dans: self)}
             .joined(separator: "\n")

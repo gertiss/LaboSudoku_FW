@@ -13,14 +13,14 @@ import Foundation
  Quelles sont les cases vides possibles pour une valeur donnée une fois qu'on a éliminé les cases impossibles à cause du rayonnement ?
  */
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     /// L'ensemble des 20 cases éliminées par rayonnement issu de l'émetteur
     func casesElimineesParRayonnement(par emetteur: Case) -> Set<Case> {
         var ensemble = Set<Case>()
-        ensemble = ensemble.union(Grille.ligne(emetteur).lesCases)
-        ensemble = ensemble.union(Grille.colonne(emetteur).lesCases)
-        ensemble = ensemble.union(Grille.carre(emetteur).lesCases)
+        ensemble = ensemble.union(GrilleAvecContenu.ligne(emetteur).lesCases)
+        ensemble = ensemble.union(GrilleAvecContenu.colonne(emetteur).lesCases)
+        ensemble = ensemble.union(GrilleAvecContenu.carre(emetteur).lesCases)
         return ensemble.subtracting([emetteur])
     }
     
@@ -39,7 +39,7 @@ public extension Grille {
 
 // MARK: - Recherche par valeur et par zone
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     /// "Eliminee" signifie : vide et dans le champ d'un émetteur de la valeur.
     func casesElimineesDirectementParRayonnementOuOccupees<Zone: UneZone>(pour valeur: Int, dans zone: Zone) -> Set<Case> {
@@ -61,14 +61,14 @@ public extension Grille {
     
 }
 
-// MARK: -  Recherche globale dans la grille
+// MARK: -  Recherche globale dans la grilleAvecContenu
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     /// Les cases qu'on peut déterminer uniquement par la stratégie d'élimination directe après rayonnement.
     /// Focalisation par valeur
     func casesObligeesApresEliminationDirecteParRayonnement(pour valeur: Int) -> Set<Case> {
-        Grille.lesZones.compactMap { zone in
+        GrilleAvecContenu.lesZones.compactMap { zone in
             caseObligeeApresEliminationDirecteParRayonnement(pour: valeur, dans: zone)
         }.ensemble
     }

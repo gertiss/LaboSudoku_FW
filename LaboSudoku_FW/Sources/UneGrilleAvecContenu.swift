@@ -7,27 +7,27 @@
 
 import Foundation
 
-public protocol UneGrille: UtilisableCommeAtome  {
+public protocol UneGrilleAvecContenu: Testable  {
     init(commentaire: String)
     init(contenu: [[Int]], commentaire: String)
     
     
     func valeur(_ cellule: Case) -> Int // 0 si pas de valeur
     func validite(_ leCoup: Coup) -> Result<Bool, String>
-    func plus(_ unCoup: Coup) -> Result<Grille, String>
-    func moins(_ uneCase: Case) -> Grille
+    func plus(_ unCoup: Coup) -> Result<GrilleAvecContenu, String>
+    func moins(_ uneCase: Case) -> GrilleAvecContenu
     
     static func ligne(_ cellule: Case) -> Ligne
     static func colonne(_ cellule: Case) -> Colonne
     static func carre(_ cellule: Case) -> Carre
     
-    var code: Result<String, String>  { get }
-    static func avecCode(_ code: String) -> Result<Grille, String>
+    var codeJSON: Result<String, String>  { get }
+    static func avecCodeJSON(_ code: String) -> Result<GrilleAvecContenu, String>
 }
 
 // MARK: - Topologie
 
-public extension UneGrille {
+public extension UneGrilleAvecContenu {
     
     static func cases(ligne: Ligne) -> [Case] {
         ligne.lesCases

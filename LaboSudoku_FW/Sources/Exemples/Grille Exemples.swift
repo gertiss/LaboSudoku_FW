@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension Grille {
+extension GrilleAvecContenu {
     
-    static let exo2 = Grille(contenu:[
+    static let exo2 = GrilleAvecContenu(contenu:[
         [0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0],
@@ -24,7 +24,7 @@ extension Grille {
 {"contenu":[[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[9,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[8,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[0,2,3,0,4,5,6,0,7]],"commentaire":"Obligatoire : 1 en bas à gauche en (8, 0). (Ligne bien remplie)"}
 """
     
-    static let pattern_JD_1 = Grille(
+    static let pattern_JD_1 = GrilleAvecContenu(
         contenu:
             [[0,0,0,0,0,0,0,0,0],
              [0,0,0,0,0,0,0,0,0],
@@ -37,13 +37,13 @@ extension Grille {
              [0,2,3,0,4,5,6,0,7]]
     )
         
-    static let patternIndirect = Grille(
+    static let patternIndirect = GrilleAvecContenu(
         contenu: [[0,0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0],[1,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,2],[0,0,0,0,0,0,0,0,3],[0,0,0,0,0,0,0,0,4],[0,0,0,0,0,0,0,0,5],[0,0,0,0,0,0,0,0,0]],
         commentaire: "2 rayons perpendiculaires dans Carre(2,1) -> 1 rayon indirect en colonne 6 -> 1 solution dans Carre(2, 2)"
         )
     
     
-    static let patternRayonnementIndirectDouble = Grille(
+    static let patternRayonnementIndirectDouble = GrilleAvecContenu(
         contenu: [[0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,1,0,8,0],
@@ -55,7 +55,7 @@ extension Grille {
                   [0,0,0,0,5,0,0,0,0]]
         )
     
-    static let LeMondeDifficile = Grille (
+    static let LeMondeDifficile = GrilleAvecContenu (
         contenu: [[0,0,0,0,0,0,0,0,0],
                   [0,0,0,0,0,0,0,9,8],
                   [0,0,0,0,0,8,1,6,0],

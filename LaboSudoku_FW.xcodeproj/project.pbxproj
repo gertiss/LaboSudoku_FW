@@ -14,10 +14,12 @@
 		50298A5A2987CA850047F8B4 /* ContraintesCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50298A592987CA850047F8B4 /* ContraintesCases.swift */; };
 		50298A5C2987CA950047F8B4 /* ContraintesValeurs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50298A5B2987CA950047F8B4 /* ContraintesValeurs.swift */; };
 		50298A5E2987CAD00047F8B4 /* Contrainte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50298A5D2987CAD00047F8B4 /* Contrainte.swift */; };
-		5034EC94297164B100EE0F34 /* UtilisableCommeAtome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */; };
+		5034EC94297164B100EE0F34 /* Testable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5034EC93297164B100EE0F34 /* Testable.swift */; };
 		50594D952975547C00CFD2F3 /* ValeursPossibles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50594D942975547C00CFD2F3 /* ValeursPossibles.swift */; };
 		50594D97297561CF00CFD2F3 /* CasesPossibles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50594D96297561CF00CFD2F3 /* CasesPossibles.swift */; };
 		50594D99297565D100CFD2F3 /* CoupsObliges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50594D98297565D100CFD2F3 /* CoupsObliges.swift */; };
+		505C2AF52992448300724644 /* CodageBank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C2AF42992448300724644 /* CodageBank.swift */; };
+		505C2AFB299251D200724644 /* Problèmes difficiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505C2AFA299251D200724644 /* Problèmes difficiles.swift */; };
 		505F1A8E2978584A0075E218 /* RayonnementIndirect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505F1A8D2978584A0075E218 /* RayonnementIndirect.swift */; };
 		5079BCE4297E890B0036C6B6 /* FocalisationCellule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079BCE3297E890B0036C6B6 /* FocalisationCellule.swift */; };
 		5079BCE6297E8E5D0036C6B6 /* Focalisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5079BCE5297E8E5D0036C6B6 /* Focalisation.swift */; };
@@ -29,7 +31,7 @@
 		50BB3F9029703F9900C6F98E /* LaboSudoku_FW.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BB3F8529703F9800C6F98E /* LaboSudoku_FW.framework */; };
 		50BB3F9529703F9900C6F98E /* LaboSudoku_FWTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3F9429703F9900C6F98E /* LaboSudoku_FWTests.swift */; };
 		50BB3F9629703F9900C6F98E /* LaboSudoku_FW.h in Headers */ = {isa = PBXBuildFile; fileRef = 50BB3F8829703F9800C6F98E /* LaboSudoku_FW.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDC2970451E00C6F98E /* Grille.swift */; };
+		50BB3FDD2970451E00C6F98E /* GrilleAvecContenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDC2970451E00C6F98E /* GrilleAvecContenu.swift */; };
 		50BB3FDF2970455100C6F98E /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FDE2970455100C6F98E /* Case.swift */; };
 		50BB3FE12970457E00C6F98E /* Ligne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE02970457E00C6F98E /* Ligne.swift */; };
 		50BB3FE32970458F00C6F98E /* UneZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE22970458F00C6F98E /* UneZone.swift */; };
@@ -37,9 +39,10 @@
 		50BB3FE7297045A300C6F98E /* Colonne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE6297045A300C6F98E /* Colonne.swift */; };
 		50BB3FE929704C0400C6F98E /* Extension Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FE829704C0400C6F98E /* Extension Swift.swift */; };
 		50BB3FEB2970551300C6F98E /* Coup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEA2970551300C6F98E /* Coup.swift */; };
-		50BB3FED297055CE00C6F98E /* UneGrille.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEC297055CE00C6F98E /* UneGrille.swift */; };
+		50BB3FED297055CE00C6F98E /* UneGrilleAvecContenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEC297055CE00C6F98E /* UneGrilleAvecContenu.swift */; };
 		50BB3FEF2970995B00C6F98E /* Grille Exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */; };
 		50C9D3F7297B088D004A43BB /* Bijection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9D3F6297B088D004A43BB /* Bijection.swift */; };
+		50E6FD8B2990F951004B0B09 /* PaireDeuxValeursDeuxCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E6FD8A2990F951004B0B09 /* PaireDeuxValeursDeuxCases.swift */; };
 		50E9133F2985A20D00B80C31 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E9133E2985A20D00B80C31 /* Debug.swift */; };
 		50E913412985B43500B80C31 /* PaireUneValeurDeuxCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E913402985B43500B80C31 /* PaireUneValeurDeuxCases.swift */; };
 /* End PBXBuildFile section */
@@ -62,10 +65,12 @@
 		50298A592987CA850047F8B4 /* ContraintesCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContraintesCases.swift; sourceTree = "<group>"; };
 		50298A5B2987CA950047F8B4 /* ContraintesValeurs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContraintesValeurs.swift; sourceTree = "<group>"; };
 		50298A5D2987CAD00047F8B4 /* Contrainte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contrainte.swift; sourceTree = "<group>"; };
-		5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilisableCommeAtome.swift; sourceTree = "<group>"; };
+		5034EC93297164B100EE0F34 /* Testable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testable.swift; sourceTree = "<group>"; };
 		50594D942975547C00CFD2F3 /* ValeursPossibles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValeursPossibles.swift; sourceTree = "<group>"; };
 		50594D96297561CF00CFD2F3 /* CasesPossibles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CasesPossibles.swift; sourceTree = "<group>"; };
 		50594D98297565D100CFD2F3 /* CoupsObliges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoupsObliges.swift; sourceTree = "<group>"; };
+		505C2AF42992448300724644 /* CodageBank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodageBank.swift; sourceTree = "<group>"; };
+		505C2AFA299251D200724644 /* Problèmes difficiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Problèmes difficiles.swift"; sourceTree = "<group>"; };
 		505F1A8D2978584A0075E218 /* RayonnementIndirect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RayonnementIndirect.swift; sourceTree = "<group>"; };
 		5079BCE3297E890B0036C6B6 /* FocalisationCellule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocalisationCellule.swift; sourceTree = "<group>"; };
 		5079BCE5297E8E5D0036C6B6 /* Focalisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Focalisation.swift; sourceTree = "<group>"; };
@@ -78,7 +83,7 @@
 		50BB3F8929703F9800C6F98E /* LaboSudoku_FW.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = LaboSudoku_FW.docc; sourceTree = "<group>"; };
 		50BB3F8F29703F9900C6F98E /* LaboSudoku_FWTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaboSudoku_FWTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50BB3F9429703F9900C6F98E /* LaboSudoku_FWTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaboSudoku_FWTests.swift; sourceTree = "<group>"; };
-		50BB3FDC2970451E00C6F98E /* Grille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grille.swift; sourceTree = "<group>"; };
+		50BB3FDC2970451E00C6F98E /* GrilleAvecContenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrilleAvecContenu.swift; sourceTree = "<group>"; };
 		50BB3FDE2970455100C6F98E /* Case.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
 		50BB3FE02970457E00C6F98E /* Ligne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ligne.swift; sourceTree = "<group>"; };
 		50BB3FE22970458F00C6F98E /* UneZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneZone.swift; sourceTree = "<group>"; };
@@ -86,9 +91,10 @@
 		50BB3FE6297045A300C6F98E /* Colonne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colonne.swift; sourceTree = "<group>"; };
 		50BB3FE829704C0400C6F98E /* Extension Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension Swift.swift"; sourceTree = "<group>"; };
 		50BB3FEA2970551300C6F98E /* Coup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coup.swift; sourceTree = "<group>"; };
-		50BB3FEC297055CE00C6F98E /* UneGrille.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneGrille.swift; sourceTree = "<group>"; };
+		50BB3FEC297055CE00C6F98E /* UneGrilleAvecContenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UneGrilleAvecContenu.swift; sourceTree = "<group>"; };
 		50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Grille Exemples.swift"; sourceTree = "<group>"; };
 		50C9D3F6297B088D004A43BB /* Bijection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bijection.swift; sourceTree = "<group>"; };
+		50E6FD8A2990F951004B0B09 /* PaireDeuxValeursDeuxCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaireDeuxValeursDeuxCases.swift; sourceTree = "<group>"; };
 		50E9133E2985A20D00B80C31 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		50E913402985B43500B80C31 /* PaireUneValeurDeuxCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaireUneValeurDeuxCases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +124,7 @@
 				50BB3FEE2970995B00C6F98E /* Grille Exemples.swift */,
 				50105D24297FC10B004731E1 /* Problèmes faciles.swift */,
 				50105D26297FD4FF004731E1 /* Problèmes moyens.swift */,
+				505C2AFA299251D200724644 /* Problèmes difficiles.swift */,
 			);
 			path = Exemples;
 			sourceTree = "<group>";
@@ -140,7 +147,6 @@
 				50594D98297565D100CFD2F3 /* CoupsObliges.swift */,
 				505F1A8D2978584A0075E218 /* RayonnementIndirect.swift */,
 				50298A582987CA440047F8B4 /* Contraintes */,
-				50C9D3F5297B0870004A43BB /* Recherche */,
 			);
 			path = Jeu;
 			sourceTree = "<group>";
@@ -184,20 +190,23 @@
 		50BB3FDB2970419C00C6F98E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				5034EC93297164B100EE0F34 /* Testable.swift */,
 				50BB3FE829704C0400C6F98E /* Extension Swift.swift */,
-				50594D932975546700CFD2F3 /* Jeu */,
-				5034EC93297164B100EE0F34 /* UtilisableCommeAtome.swift */,
-				50BB3FEC297055CE00C6F98E /* UneGrille.swift */,
 				50BB3FE22970458F00C6F98E /* UneZone.swift */,
-				50BB3FDC2970451E00C6F98E /* Grille.swift */,
+				50BB3FEC297055CE00C6F98E /* UneGrilleAvecContenu.swift */,
+				50BB3FDC2970451E00C6F98E /* GrilleAvecContenu.swift */,
 				50B134E72982B1F500B735DF /* GrilleStatic.swift */,
-				50105D23297FC0AA004731E1 /* Exemples */,
+				505C2AF42992448300724644 /* CodageBank.swift */,
 				50BB3FDE2970455100C6F98E /* Case.swift */,
 				50BB3FE42970459B00C6F98E /* Carre.swift */,
 				50BB3FE02970457E00C6F98E /* Ligne.swift */,
 				50BB3FE6297045A300C6F98E /* Colonne.swift */,
 				50BB3FEA2970551300C6F98E /* Coup.swift */,
 				50E913402985B43500B80C31 /* PaireUneValeurDeuxCases.swift */,
+				50E6FD8A2990F951004B0B09 /* PaireDeuxValeursDeuxCases.swift */,
+				50105D23297FC0AA004731E1 /* Exemples */,
+				50594D932975546700CFD2F3 /* Jeu */,
+				50C9D3F5297B0870004A43BB /* Recherche */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -328,9 +337,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50594D952975547C00CFD2F3 /* ValeursPossibles.swift in Sources */,
+				505C2AFB299251D200724644 /* Problèmes difficiles.swift in Sources */,
 				50594D97297561CF00CFD2F3 /* CasesPossibles.swift in Sources */,
 				50298A5E2987CAD00047F8B4 /* Contrainte.swift in Sources */,
-				50BB3FDD2970451E00C6F98E /* Grille.swift in Sources */,
+				50BB3FDD2970451E00C6F98E /* GrilleAvecContenu.swift in Sources */,
 				50BB3FEF2970995B00C6F98E /* Grille Exemples.swift in Sources */,
 				50121796297D24A000F4953D /* FocalisationValeurZone.swift in Sources */,
 				50E9133F2985A20D00B80C31 /* Debug.swift in Sources */,
@@ -346,7 +356,7 @@
 				50BB3FE929704C0400C6F98E /* Extension Swift.swift in Sources */,
 				50BB3FE12970457E00C6F98E /* Ligne.swift in Sources */,
 				50298A5C2987CA950047F8B4 /* ContraintesValeurs.swift in Sources */,
-				50BB3FED297055CE00C6F98E /* UneGrille.swift in Sources */,
+				50BB3FED297055CE00C6F98E /* UneGrilleAvecContenu.swift in Sources */,
 				50298A5A2987CA850047F8B4 /* ContraintesCases.swift in Sources */,
 				50B134E42982AFC100B735DF /* ContrainteValeurPaireDansCarre.swift in Sources */,
 				50BB3FE32970458F00C6F98E /* UneZone.swift in Sources */,
@@ -354,8 +364,10 @@
 				50BB3FE7297045A300C6F98E /* Colonne.swift in Sources */,
 				50C9D3F7297B088D004A43BB /* Bijection.swift in Sources */,
 				5079BCE6297E8E5D0036C6B6 /* Focalisation.swift in Sources */,
-				5034EC94297164B100EE0F34 /* UtilisableCommeAtome.swift in Sources */,
+				5034EC94297164B100EE0F34 /* Testable.swift in Sources */,
+				50E6FD8B2990F951004B0B09 /* PaireDeuxValeursDeuxCases.swift in Sources */,
 				50BB3F8A29703F9800C6F98E /* LaboSudoku_FW.docc in Sources */,
+				505C2AF52992448300724644 /* CodageBank.swift in Sources */,
 				5079BCE8297EF8340036C6B6 /* Partie.swift in Sources */,
 				50B134E62982AFDB00B735DF /* ContrainteCasePaire.swift in Sources */,
 				5012179A297DB21F00F4953D /* Recherche.swift in Sources */,

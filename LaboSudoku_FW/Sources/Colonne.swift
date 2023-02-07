@@ -27,7 +27,7 @@ public struct Colonne: UneZone {
     }
     
     public var nom: String {
-        return "la colonne " + Grille.nomsColonnes[index]
+        return "la colonne " + GrilleAvecContenu.nomsColonnes[index]
     }
 
 

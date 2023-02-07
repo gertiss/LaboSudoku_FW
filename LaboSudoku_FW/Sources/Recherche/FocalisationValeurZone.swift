@@ -67,31 +67,31 @@ public extension FocalisationValeurZone {
         }
     }
     
-    /// Les cases interdites dans la zone pour la valeur, dans une grille donnée.
+    /// Les cases interdites dans la zone pour la valeur, dans une grilleAvecContenu donnée.
     /// "Interdite" signifie : vide et dans le champ d'un émetteur de la valeur.
-    func casesInterdites(pour grille: Grille) -> Set<Case> {
+    func casesInterdites(pour grilleAvecContenu: GrilleAvecContenu) -> Set<Case> {
         switch self {
         case .carre(let carre, let int):
-            return grille.casesElimineesDirectementParRayonnementOuOccupees(pour: int, dans: carre)
+            return grilleAvecContenu.casesElimineesDirectementParRayonnementOuOccupees(pour: int, dans: carre)
         case .ligne(let ligne, let int):
-            return grille.casesElimineesDirectementParRayonnementOuOccupees(pour: int, dans: ligne)
+            return grilleAvecContenu.casesElimineesDirectementParRayonnementOuOccupees(pour: int, dans: ligne)
         case .colonne(let colonne, let int):
-            return grille.casesElimineesDirectementParRayonnementOuOccupees(pour: int, dans: colonne)
+            return grilleAvecContenu.casesElimineesDirectementParRayonnementOuOccupees(pour: int, dans: colonne)
         }
     }
     
-    /// Les cases possibles dans la zone pour la valeur, dans une grille donnée.
-    func casesPossibles(pour grille: Grille) -> Set<Case> {
-        cases.subtracting(casesInterdites(pour: grille))
+    /// Les cases possibles dans la zone pour la valeur, dans une grilleAvecContenu donnée.
+    func casesPossibles(pour grilleAvecContenu: GrilleAvecContenu) -> Set<Case> {
+        cases.subtracting(casesInterdites(pour: grilleAvecContenu))
     }
     
-    /// On retourne une case si c'est la seule possible pour la grille, nil sinon
-    func uniqueCasePossible(pour grille: Grille) -> Case? {
-        casesPossibles(pour: grille).uniqueValeur
+    /// On retourne une case si c'est la seule possible pour la grilleAvecContenu, nil sinon
+    func uniqueCasePossible(pour grilleAvecContenu: GrilleAvecContenu) -> Case? {
+        casesPossibles(pour: grilleAvecContenu).uniqueValeur
     }
     
-    func uniquePairePossible(pour grille: Grille) -> Set<Case>? {
-        let casesCandidates = casesPossibles(pour: grille)
+    func uniquePairePossible(pour grilleAvecContenu: GrilleAvecContenu) -> Set<Case>? {
+        let casesCandidates = casesPossibles(pour: grilleAvecContenu)
         return casesCandidates.count == 2 ? casesCandidates : nil
     }
     

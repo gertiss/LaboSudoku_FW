@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - Par rayonnement à partir des valeurs
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     /// Tous les coups obligés trouvés par rayonnement direct pour toutes les valeurs
     /// Focalisation : pour chaque valeur, pour chaque zone, chercher la neuvième case
@@ -26,7 +26,7 @@ public extension Grille {
 
 // MARK: - Par unique valeur possible dans une case
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     
     /// Tous les coups obligés trouvés par la règle 8 valeurs impossibles dans une zone => neuvième obligée
@@ -34,7 +34,7 @@ public extension Grille {
     var coupsObligesParUniqueValeurPossible: Set<Coup> {
         var ensemble: Set<Coup> = []
         
-        for zone in Grille.lesZones {
+        for zone in GrilleAvecContenu.lesZones {
             ensemble = ensemble.union(coupsObligesParUniqueValeurPossible(dans: zone))
         }
         

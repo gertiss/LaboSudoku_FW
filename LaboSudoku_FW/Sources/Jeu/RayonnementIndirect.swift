@@ -21,12 +21,12 @@ import Foundation
  
  */
 
-public extension Grille {
+public extension GrilleAvecContenu {
     
     func casesElimineesParRayonnementIndirect(pour valeur: Int) -> Set<Case> {
         let casesEliminees = casesElimineesParRayonnement(pour: valeur)
         let ensemble = casesEliminees
-        for carre in Grille.lesCarres {
+        for carre in GrilleAvecContenu.lesCarres {
             let casesOccupees = casesOccupees(dans: carre)
             let casesLibres = carre.casesLibres(casesEliminees: casesEliminees, casesOccupees: casesOccupees)
             for indexLigne in carre.rangeLignes {
